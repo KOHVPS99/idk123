@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ضمائر النصب المتصلة (ناهِيك) — الصف الثامن</title>
+
+  <style>
+    :root{
+      --bg:#f6f8fc;
+      --paper:#ffffff;
+      --ink:#0f172a;
+      --muted:#475569;
+      --line:#e5e7eb;
+      --shadow: 0 18px 45px rgba(15, 23, 42, .10);
+
+      --accent:#2563eb;
+      --accent2:#16a34a;
+      --softBlue:#eef4ff;
+      --softGreen:#eefcf3;
+
+      --r:18px;
+      --max:1180px;
+
+      --h1: clamp(24px, 2.6vw, 38px);
+      --h2: clamp(18px, 2.1vw, 28px);
+      --p:  clamp(16px, 1.35vw, 18px);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 500px at 10% 0%, #eaf2ff, transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, #eafbf0, transparent 60%),
+        var(--bg);
+      min-height:100vh;
+    }
+
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(246,248,252,.90);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    .top{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 12px;
+      min-width: 280px;
+    }
+    .mark{
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      display:grid;
+      place-items:center;
+      box-shadow: 0 10px 25px rgba(37,99,235,.20);
+      color:white;
+      font-weight:1000;
+    }
+    .brand h1{ margin:0; font-size:14px; font-weight:1000; }
+    .brand small{ display:block; margin-top:3px; color:var(--muted); font-weight:800; font-size:12px; }
+
+    .controls{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      padding: 9px 12px;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid var(--line);
+      box-shadow: 0 8px 20px rgba(15,23,42,.06);
+      color: var(--muted);
+      font-weight: 1000;
+      user-select:none;
+    }
+    .btn{
+      cursor:pointer;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 1000;
+      box-shadow: 0 8px 20px rgba(15,23,42,.06);
+      transition: .15s transform, .15s box-shadow, .15s border-color;
+    }
+    .btn:hover{ border-color:#cbd5e1; box-shadow:0 12px 26px rgba(15,23,42,.10); }
+    .btn:active{ transform: translateY(1px) }
+    .btn.primary{
+      background: var(--accent);
+      border-color: rgba(37,99,235,.25);
+      color:white;
+      box-shadow: 0 12px 26px rgba(37,99,235,.20);
+    }
+    .btn:disabled{ opacity:.5; cursor:not-allowed }
+
+    .progressWrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 16px 14px;
+    }
+    .track{
+      height: 10px;
+      border-radius: 999px;
+      background: white;
+      border: 1px solid var(--line);
+      overflow:hidden;
+    }
+    .bar{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
+      transition: width .25s ease;
+    }
+
+    main{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 16px 26px;
+    }
+
+    .slide{
+      display:none;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .slide.active{ display:block }
+
+    .slideHeader{
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(90deg, var(--softBlue), transparent 60%),
+        linear-gradient(270deg, var(--softGreen), transparent 55%);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      flex-wrap:wrap;
+    }
+    .slideHeader .big{
+      margin:0;
+      font-size: var(--h1);
+      line-height: 1.15;
+      font-weight: 1100;
+    }
+    .slideHeader .sub{
+      margin:8px 0 0;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 14px;
+      line-height:1.7;
+      max-width: 900px;
+    }
+
+    .body{
+      padding: 18px 20px 10px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .card{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: white;
+      padding: 16px;
+    }
+    .card h3{ margin:0 0 10px; font-size: var(--h2); font-weight: 1100; }
+    .card p{ margin:0 0 12px; font-size: var(--p); line-height: 1.9; }
+    .muted{color:var(--muted)}
+    .bullets{
+      margin: 10px 0 0;
+      padding: 0 18px 0 0;
+      font-size: var(--p);
+      line-height: 1.9;
+    }
+    .bullets li{ margin: 8px 0 }
+
+    /* QA */
+    .qa{
+      margin-top: 12px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      overflow:hidden;
+    }
+    .qaTop{
+      background: var(--softBlue);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .qaTop strong{ color: var(--accent); font-weight: 1100; }
+    .btnSmall{
+      cursor:pointer;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--ink);
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-weight: 1000;
+    }
+    .qList{
+      margin:0;
+      padding: 12px 18px 10px;
+      list-style: decimal;
+      font-size: var(--p);
+      line-height: 1.9;
+    }
+    .qList li{
+      margin: 10px 0 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+    .qList li:last-child{ border-bottom:none; padding-bottom:0 }
+    .qRow{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap:wrap;
+    }
+    .qText{ flex:1; min-width: 260px }
+    .btnAnswer{
+      cursor:pointer;
+      border: 1px solid rgba(37,99,235,.25);
+      background: rgba(37,99,235,.10);
+      color: var(--accent);
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-weight: 1100;
+      white-space:nowrap;
+    }
+    .answer{
+      display:none;
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #eefcf3;
+      border: 1px solid rgba(22,163,74,.25);
+      color: #065f46;
+      font-weight: 900;
+    }
+    .answer strong{ color: var(--accent2) }
+
+    /* BIG WHITEBOARD BELOW */
+    .boardPanel{
+      margin: 0 20px 20px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
+      padding: 14px;
+    }
+    .boardTitle{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-bottom: 10px;
+    }
+    .boardTitle h3{ margin:0; font-size: 18px; font-weight: 1100; }
+    .boardTitle .hint{ color: var(--muted); font-weight: 800; font-size: 12px; }
+
+    .tools{
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      flex-wrap:wrap;
+      margin-bottom: 10px;
+    }
+    .toolBtn{
+      cursor:pointer;
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 12px;
+      padding: 8px 10px;
+      font-weight: 1000;
+    }
+    .toolBtn.active{
+      border-color: rgba(37,99,235,.35);
+      background: rgba(37,99,235,.08);
+      color: var(--accent);
+    }
+    .tools label{
+      display:flex;
+      align-items:center;
+      gap: 6px;
+      border: 1px solid var(--line);
+      padding: 7px 10px;
+      border-radius: 12px;
+      background: white;
+      font-weight: 900;
+      color: var(--muted);
+    }
+    input[type="color"]{ width: 26px; height: 26px; border:none; background: transparent; padding:0; }
+    input[type="range"]{ width: 180px; }
+
+    .boardWrap{
+      position: relative;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(#ffffff, #ffffff),
+        repeating-linear-gradient(0deg, transparent, transparent 26px, rgba(15,23,42,.06) 26px, rgba(15,23,42,.06) 27px);
+      overflow:hidden;
+      height: min(60vh, 520px); /* BIGGER */
+      touch-action: none;
+    }
+    canvas{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+    }
+    .boardWatermark{
+      position:absolute;
+      left: 12px;
+      bottom: 10px;
+      font-size: 12px;
+      font-weight: 900;
+      color: rgba(71,85,105,.55);
+      user-select:none;
+      pointer-events:none;
+    }
+
+    footer{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 16px 18px;
+      color: var(--muted);
+      font-weight: 800;
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .kbd{
+      display:inline-block;
+      border: 1px solid var(--line);
+      background: white;
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-weight: 1000;
+      color: var(--ink);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="top">
+    <div class="brand">
+      <div class="mark">ن</div>
+      <div>
+        <h1>ضمائر النصب المتصلة (ناهِيك) — عرض تفاعلي</h1>
+        <small>الصف الثامن · الإمارات · الفصل الدراسي الثاني · سبورة كبيرة أسفل الشريحة</small>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="pill" id="counter">1 / 15</div>
+      <button class="btn" id="prev">السابق</button>
+      <button class="btn primary" id="next">التالي</button>
+    </div>
+  </div>
+
+  <div class="progressWrap">
+    <div class="track"><div class="bar" id="bar"></div></div>
+  </div>
+</header>
+
+<main id="deck">
+
+  <!-- Slide 1 -->
+  <section class="slide active" data-title="العنوان">
+    <div class="slideHeader">
+      <div>
+        <h2 class="big">ضمائر النصب المتصلة (ناهِيك)</h2>
+        <p class="sub">كل شريحة فيها شرح + أسئلة وإجابات. والسبورة الكبيرة بالأسفل للكتابة والرسم (وتحفظ رسمك لكل شريحة).</p>
+      </div>
+    </div>
+    <div class="body">
+      <div class="card">
+        <h3>الفكرة الأساسية</h3>
+        <p>ضمائر النصب المتصلة هي ضمائر <b>تلتصق بالفعل</b> وتدل على من وقع عليه الفعل، وتكون <b>في محل مفعول به</b>.</p>
+        <ul class="bullets">
+          <li>بدون مسافة بين الفعل والضمير.</li>
+          <li>نفهمها من معنى الجملة.</li>
+          <li>اختصار الحفظ: <b>ناهِيك</b>.</li>
+        </ul>
+
+        <div class="qa">
+          <div class="qaTop">
+            <div><strong>أسئلة</strong></div>
+            <button class="btnSmall" data-showall>عرض كل الإجابات</button>
+          </div>
+          <ol class="qList">
+            <li>
+              <div class="qRow">
+                <div class="qText">ما معنى “ضمير”؟</div>
+                <button class="btnAnswer" data-answer="s1a1">عرض الإجابة</button>
+              </div>
+              <div class="answer" id="s1a1"><strong>الإجابة:</strong> كلمة تحلّ محل الاسم لتجنّب التكرار وتوضيح المعنى.</div>
+            </li>
+            <li>
+              <div class="qRow">
+                <div class="qText">ما معنى “ضمائر النصب”؟</div>
+                <button class="btnAnswer" data-answer="s1a2">عرض الإجابة</button>
+              </div>
+              <div class="answer" id="s1a2"><strong>الإجابة:</strong> ضمائر تأتي في محل <strong>مفعول به</strong> (أي وقع عليها الفعل).</div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slides 2–15 (same content as before but WITHOUT the side board).
+       To keep this message shorter, they are included compactly below. -->
+
+  <section class="slide" data-title="تعريف سريع">
+    <div class="slideHeader"><div><h2 class="big">تعريف سريع</h2><p class="sub">ضمير متصل + يدل على المفعول به (وقع عليه الفعل).</p></div></div>
+    <div class="body">
+      <div class="card">
+        <h3>مثال واضح</h3>
+        <p><b>أشكره</b> = فعل + (ه) ضمير متصل في محل مفعول به.</p>
+        <ul class="bullets">
+          <li>غائب: أشكره</li><li>مخاطب: أشكرك</li><li>متكلم: ذكرني</li><li>نحن: ساعدنا</li>
+        </ul>
+        <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+          <ol class="qList">
+            <li><div class="qRow"><div class="qText">ما موقعه غالبًا؟</div><button class="btnAnswer" data-answer="s2a1">عرض الإجابة</button></div><div class="answer" id="s2a1"><strong>الإجابة:</strong> في محل مفعول به.</div></li>
+            <li><div class="qRow"><div class="qText">استخرج من “أكرمته”.</div><button class="btnAnswer" data-answer="s2a2">عرض الإجابة</button></div><div class="answer" id="s2a2"><strong>الإجابة:</strong> (ه).</div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="ناهِيك">
+    <div class="slideHeader"><div><h2 class="big">اختصار الحفظ: ناهِيك</h2><p class="sub">مراجعة سريعة + لازم أمثلة.</p></div></div>
+    <div class="body">
+      <div class="card">
+        <h3>لماذا؟</h3>
+        <ul class="bullets"><li>يساعدك تتذكر بسرعة.</li><li>الدرجة تجي من التطبيق.</li></ul>
+        <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+          <ol class="qList">
+            <li><div class="qRow"><div class="qText">هل يكفي لوحده؟</div><button class="btnAnswer" data-answer="s3a1">عرض الإجابة</button></div><div class="answer" id="s3a1"><strong>الإجابة:</strong> لا، لازم تدريب.</div></li>
+            <li><div class="qRow"><div class="qText">صحّح: “شكر ني”.</div><button class="btnAnswer" data-answer="s3a2">عرض الإجابة</button></div><div class="answer" id="s3a2"><strong>الإجابة:</strong> “شكرني”.</div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" data-title="هاء الغائب">
+    <div class="slideHeader"><div><h2 class="big">هاء الغائب</h2><p class="sub">مثل: أشكره / أكرمه.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>أمثلة</h3>
+      <ul class="bullets"><li>أشكره (ه)</li><li>ساعدها (ها)</li><li>قابلهم (هم)</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">استخرج من “أكرمه”.</div><button class="btnAnswer" data-answer="s4a1">عرض الإجابة</button></div><div class="answer" id="s4a1"><strong>الإجابة:</strong> (ه).</div></li>
+          <li><div class="qRow"><div class="qText">جملة فيها (هم).</div><button class="btnAnswer" data-answer="s4a2">عرض الإجابة</button></div><div class="answer" id="s4a2"><strong>الإجابة:</strong> “قابلتهم بعد المدرسة”.</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="كاف الخطاب">
+    <div class="slideHeader"><div><h2 class="big">كاف الخطاب</h2><p class="sub">مثل: أشكرك / رأيتك.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>أمثلة</h3>
+      <ul class="bullets"><li>أشكرك (ك)</li><li>رأيتك (ك)</li><li>نصحك (ك)</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">استخرج من “ساعدك”.</div><button class="btnAnswer" data-answer="s5a1">عرض الإجابة</button></div><div class="answer" id="s5a1"><strong>الإجابة:</strong> (ك).</div></li>
+          <li><div class="qRow"><div class="qText">جملة فيها (ك).</div><button class="btnAnswer" data-answer="s5a2">عرض الإجابة</button></div><div class="answer" id="s5a2"><strong>الإجابة:</strong> “أقدّرك”.</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="ياء المتكلم">
+    <div class="slideHeader"><div><h2 class="big">ياء المتكلم (ني)</h2><p class="sub">مثل: ذكرني / علّمني.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>أمثلة</h3>
+      <ul class="bullets"><li>ذكرني (ني)</li><li>علّمني (ني)</li><li>سألني (ني)</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">استخرج من “أكرمني”.</div><button class="btnAnswer" data-answer="s6a1">عرض الإجابة</button></div><div class="answer" id="s6a1"><strong>الإجابة:</strong> (ني).</div></li>
+          <li><div class="qRow"><div class="qText">جملة فيها (ني).</div><button class="btnAnswer" data-answer="s6a2">عرض الإجابة</button></div><div class="answer" id="s6a2"><strong>الإجابة:</strong> “ساعدني صديقي”.</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="نا (نحن)">
+    <div class="slideHeader"><div><h2 class="big">نا (نحن)</h2><p class="sub">مثل: ساعدنا / كرّمنا.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>أمثلة</h3>
+      <ul class="bullets"><li>ساعدنا (نا)</li><li>كرّمنا (نا)</li><li>قابلنا (نا)</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">استخرج من “علّمنا”.</div><button class="btnAnswer" data-answer="s7a1">عرض الإجابة</button></div><div class="answer" id="s7a1"><strong>الإجابة:</strong> (نا).</div></li>
+          <li><div class="qRow"><div class="qText">كيف نميّزها؟</div><button class="btnAnswer" data-answer="s7a2">عرض الإجابة</button></div><div class="answer" id="s7a2"><strong>الإجابة:</strong> من السياق: من الفاعل وعلى من وقع الفعل.</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="مقارنة">
+    <div class="slideHeader"><div><h2 class="big">مقارنة سريعة</h2><p class="sub">غائب/مخاطب/متكلم/نحن مع مثال.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>أمثلة جاهزة</h3>
+      <ul class="bullets"><li>أشكره (ه)</li><li>أشكرك (ك)</li><li>ذكرني (ني)</li><li>ساعدنا (نا)</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>تحويل</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">حوّل “سألني” إلى مخاطب.</div><button class="btnAnswer" data-answer="s8a1">عرض الإجابة</button></div><div class="answer" id="s8a1"><strong>الإجابة:</strong> “سألك”.</div></li>
+          <li><div class="qRow"><div class="qText">حوّل “أشكرك” إلى غائب.</div><button class="btnAnswer" data-answer="s8a2">عرض الإجابة</button></div><div class="answer" id="s8a2"><strong>الإجابة:</strong> “أشكره”.</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="خطوات الاستخراج">
+    <div class="slideHeader"><div><h2 class="big">خطوات الاستخراج</h2><p class="sub">٣ خطوات: فعل → آخر الكلمة → على من يدل.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>الخطوات</h3>
+      <ul class="bullets"><li>حدّد الفعل.</li><li>لاحظ الجزء المتصل آخره.</li><li>اسأل: على من وقع الفعل؟</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>تطبيق</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">استخرج من “أحبك”.</div><button class="btnAnswer" data-answer="s9a1">عرض الإجابة</button></div><div class="answer" id="s9a1"><strong>الإجابة:</strong> (ك).</div></li>
+          <li><div class="qRow"><div class="qText">استخرج من “قابلهم”.</div><button class="btnAnswer" data-answer="s9a2">عرض الإجابة</button></div><div class="answer" id="s9a2"><strong>الإجابة:</strong> (هم).</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="أخطاء">
+    <div class="slideHeader"><div><h2 class="big">أخطاء شائعة</h2><p class="sub">أهم خطأ: فصل الضمير عن الفعل.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>تصحيح</h3>
+      <ul class="bullets"><li>❌ رأيت ك → ✅ رأيتك</li><li>❌ شكر ني → ✅ شكرني</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>سؤال</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">صحّح: “ساعد نا أبي”.</div><button class="btnAnswer" data-answer="s10a1">عرض الإجابة</button></div><div class="answer" id="s10a1"><strong>الإجابة:</strong> “ساعدنا أبي”.</div></li>
+          <li><div class="qRow"><div class="qText">لماذا خطأ؟</div><button class="btnAnswer" data-answer="s10a2">عرض الإجابة</button></div><div class="answer" id="s10a2"><strong>الإجابة:</strong> لأنه ضمير متصل.</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="أمثلة محلولة 1">
+    <div class="slideHeader"><div><h2 class="big">أمثلة محلولة (1)</h2><p class="sub">نحدّد الضمير ونوعه.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>حلول</h3>
+      <ul class="bullets"><li>شكرني → (ني) متكلم</li><li>أشكرك → (ك) مخاطب</li><li>أكرمه → (ه) غائب</li><li>كرّمنا → (نا) نحن</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>سؤال</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">في “أكرمه” من المقصود؟</div><button class="btnAnswer" data-answer="s11a1">عرض الإجابة</button></div><div class="answer" id="s11a1"><strong>الإجابة:</strong> هو (غائب).</div></li>
+          <li><div class="qRow"><div class="qText">في “أشكرك” من المقصود؟</div><button class="btnAnswer" data-answer="s11a2">عرض الإجابة</button></div><div class="answer" id="s11a2"><strong>الإجابة:</strong> أنت (مخاطب).</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="أمثلة محلولة 2">
+    <div class="slideHeader"><div><h2 class="big">أمثلة محلولة (2)</h2><p class="sub">تثبيت بالتمارين.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>حلول</h3>
+      <ul class="bullets"><li>نصحك → (ك)</li><li>سألني → (ني)</li><li>قابلهم → (هم)</li><li>ساعدنا → (نا)</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>سؤال</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">حوّل “سألني” إلى غائب.</div><button class="btnAnswer" data-answer="s12a1">عرض الإجابة</button></div><div class="answer" id="s12a1"><strong>الإجابة:</strong> “سأله”.</div></li>
+          <li><div class="qRow"><div class="qText">حوّل “ساعدنا” إلى مخاطب.</div><button class="btnAnswer" data-answer="s12a2">عرض الإجابة</button></div><div class="answer" id="s12a2"><strong>الإجابة:</strong> “ساعدك”.</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="تدريب 1">
+    <div class="slideHeader"><div><h2 class="big">تدريب (1): أكمل</h2><p class="sub">اختر من: ه/ك/ني/نا</p></div></div>
+    <div class="body"><div class="card">
+      <h3>أكمل</h3>
+      <ul class="bullets"><li>1) شكرَ (___) المعلمُ.</li><li>2) ساعدَ (___) أبي.</li><li>3) ذكرَ (___) صديقي.</li><li>4) أكرمَ (___) المدير.</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>الحل</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">الحل</div><button class="btnAnswer" data-answer="s13a1">عرض الإجابة</button></div>
+            <div class="answer" id="s13a1"><strong>الإجابة:</strong> 1) ك  2) نا  3) ني  4) ه</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="تدريب 2">
+    <div class="slideHeader"><div><h2 class="big">تدريب (2): تصحيح + استخراج</h2><p class="sub">تأكد من الاتصال بدون مسافة.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>أسئلة</h3>
+      <ul class="bullets"><li>1) صحّح: “رأيت ك”.</li><li>2) استخرج من “علّمني”.</li><li>3) استخرج من “ساعدها”.</li><li>4) استخرج من “نصحك”.</li></ul>
+      <div class="qa"><div class="qaTop"><div><strong>الإجابات</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">حل 1–4</div><button class="btnAnswer" data-answer="s14a1">عرض الإجابة</button></div>
+            <div class="answer" id="s14a1"><strong>الإجابة:</strong> 1) رأيتك  2) ني  3) ها  4) ك</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="slide" data-title="الملخص">
+    <div class="slideHeader"><div><h2 class="big">ملخص نهائي</h2><p class="sub">راجع قبل التسليم.</p></div></div>
+    <div class="body"><div class="card">
+      <h3>الخلاصة</h3>
+      <ul class="bullets">
+        <li>هاء الغائب: أشكره</li>
+        <li>كاف الخطاب: أشكرك</li>
+        <li>ياء المتكلم: ذكرني</li>
+        <li>نا: ساعدنا</li>
+      </ul>
+      <div class="qa"><div class="qaTop"><div><strong>سؤال ختامي</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
+        <ol class="qList">
+          <li><div class="qRow"><div class="qText">اكتب جملة فيها (ك) وجملة فيها (ه).</div><button class="btnAnswer" data-answer="s15a1">عرض الإجابة</button></div>
+            <div class="answer" id="s15a1"><strong>الإجابة:</strong> أشكرك على مساعدتك + أكرمه المعلم.</div></li>
+        </ol>
+      </div>
+    </div></div>
+  </section>
+
+</main>
+
+<!-- BIG WHITEBOARD BELOW ALL SLIDES -->
+<section class="boardPanel">
+  <div class="boardTitle">
+    <h3>السبورة الكبيرة (تكتب وترسم)</h3>
+    <div class="hint">تحفظ رسمك لكل شريحة ✅</div>
+  </div>
+
+  <div class="tools">
+    <button class="toolBtn active" data-tool="pen">✍️ قلم</button>
+    <button class="toolBtn" data-tool="eraser">🧽 ممحاة</button>
+
+    <label>🎨 لون <input type="color" id="color" value="#2563eb"></label>
+    <label>📏 حجم <input type="range" id="size" min="2" max="28" value="6"></label>
+
+    <button class="toolBtn" id="clear">مسح السبورة</button>
+    <button class="toolBtn" id="save">تحميل الرسم</button>
+  </div>
+
+  <div class="boardWrap">
+    <canvas id="board"></canvas>
+    <div class="boardWatermark">Slide board memory ✅</div>
+  </div>
+</section>
+
+<footer>
+  <div>اختصارات: <span class="kbd">←</span> السابق · <span class="kbd">→</span> التالي · <span class="kbd">Home</span> أول شريحة · <span class="kbd">End</span> آخر شريحة</div>
+  <div>السبورة تحفظ الرسم لكل شريحة حتى لو تنقلت.</div>
+</footer>
+
+<script>
+  // Slides
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const counter = document.getElementById("counter");
+  const prevBtn = document.getElementById("prev");
+  const nextBtn = document.getElementById("next");
+  const bar = document.getElementById("bar");
+  let idx = 0;
+
+  function progress(){
+    bar.style.width = (((idx+1) / slides.length) * 100) + "%";
+    counter.textContent = `${idx+1} / ${slides.length}`;
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === slides.length - 1;
+    document.title = `${slides[idx].dataset.title} — ضمائر النصب المتصلة (ناهِيك)`;
+  }
+
+  function collapseAnswers(slide){
+    slide.querySelectorAll(".answer").forEach(a => a.style.display = "none");
+    slide.querySelectorAll(".btnAnswer").forEach(b => b.textContent = "عرض الإجابة");
+    slide.querySelectorAll("[data-showall]").forEach(x => x.textContent = "عرض كل الإجابات");
+  }
+
+  // Whiteboard
+  const canvas = document.getElementById("board");
+  const ctx = canvas.getContext("2d");
+  const colorEl = document.getElementById("color");
+  const sizeEl = document.getElementById("size");
+  const clearBtn = document.getElementById("clear");
+  const saveBtn = document.getElementById("save");
+  const toolBtns = Array.from(document.querySelectorAll(".toolBtn[data-tool]"));
+
+  let tool = "pen";
+  let drawing = false;
+  let last = null;
+
+  // save per slide
+  const boardStore = new Map(); // slide index -> dataURL
+
+  function resizeCanvas(){
+    const data = canvas.toDataURL();
+    const wrap = canvas.parentElement.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+
+    canvas.width = Math.floor(wrap.width * dpr);
+    canvas.height = Math.floor(wrap.height * dpr);
+    canvas.style.width = wrap.width + "px";
+    canvas.style.height = wrap.height + "px";
+
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+
+    // restore image
+    if (data && data !== "data:,"){
+      const img = new Image();
+      img.onload = () => {
+        ctx.clearRect(0,0,wrap.width,wrap.height);
+        ctx.drawImage(img, 0, 0, wrap.width, wrap.height);
+      };
+      img.src = data;
+    }
+  }
+
+  function setActiveTool(t){
+    tool = t;
+    toolBtns.forEach(b => b.classList.toggle("active", b.dataset.tool === t));
+  }
+  toolBtns.forEach(b => b.addEventListener("click", () => setActiveTool(b.dataset.tool)));
+
+  function getPos(evt){
+    const rect = canvas.getBoundingClientRect();
+    const touch = evt.touches && evt.touches[0];
+    const clientX = touch ? touch.clientX : evt.clientX;
+    const clientY = touch ? touch.clientY : evt.clientY;
+    return { x: clientX - rect.left, y: clientY - rect.top, w: rect.width, h: rect.height };
+  }
+
+  function stroke(from, to){
+    ctx.save();
+    const width = Number(sizeEl.value);
+    if (tool === "eraser"){
+      ctx.globalCompositeOperation = "destination-out";
+      ctx.strokeStyle = "rgba(0,0,0,1)";
+      ctx.lineWidth = width * 2.2;
+    } else {
+      ctx.globalCompositeOperation = "source-over";
+      ctx.strokeStyle = colorEl.value;
+      ctx.lineWidth = width;
+    }
+    ctx.beginPath();
+    ctx.moveTo(from.x, from.y);
+    ctx.lineTo(to.x, to.y);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function startDraw(evt){
+    drawing = true;
+    const pos = getPos(evt);
+    last = { x: pos.x, y: pos.y };
+    evt.preventDefault();
+  }
+  function moveDraw(evt){
+    if (!drawing) return;
+    const pos = getPos(evt);
+    const now = { x: pos.x, y: pos.y };
+    stroke(last, now);
+    last = now;
+    evt.preventDefault();
+  }
+  function endDraw(){ drawing = false; last = null; }
+
+  canvas.addEventListener("mousedown", startDraw);
+  canvas.addEventListener("mousemove", moveDraw);
+  window.addEventListener("mouseup", endDraw);
+
+  canvas.addEventListener("touchstart", startDraw, {passive:false});
+  canvas.addEventListener("touchmove", moveDraw, {passive:false});
+  window.addEventListener("touchend", endDraw);
+
+  clearBtn.addEventListener("click", () => {
+    const rect = canvas.getBoundingClientRect();
+    ctx.clearRect(0,0,rect.width,rect.height);
+  });
+
+  saveBtn.addEventListener("click", () => {
+    const a = document.createElement("a");
+    a.download = `whiteboard-slide-${idx+1}.png`;
+    a.href = canvas.toDataURL("image/png");
+    a.click();
+  });
+
+  function saveBoardForSlide(i){
+    if (!canvas) return;
+    boardStore.set(i, canvas.toDataURL("image/png"));
+  }
+
+  function restoreBoardForSlide(i){
+    const rect = canvas.getBoundingClientRect();
+    ctx.clearRect(0,0,rect.width,rect.height);
+    const data = boardStore.get(i);
+    if (!data) return;
+    const img = new Image();
+    img.onload = () => ctx.drawImage(img, 0, 0, rect.width, rect.height);
+    img.src = data;
+  }
+
+  function show(i){
+    saveBoardForSlide(idx);
+    idx = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s,n) => s.classList.toggle("active", n === idx));
+    collapseAnswers(slides[idx]);
+    restoreBoardForSlide(idx);
+    progress();
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  prevBtn.addEventListener("click", () => show(idx - 1));
+  nextBtn.addEventListener("click", () => show(idx + 1));
+
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowLeft") show(idx - 1);
+    if (e.key === "ArrowRight") show(idx + 1);
+    if (e.key === "Home") show(0);
+    if (e.key === "End") show(slides.length - 1);
+  });
+
+  // Q/A click handler
+  document.addEventListener("click", (e) => {
+    const ansBtn = e.target.closest(".btnAnswer");
+    if (ansBtn){
+      const id = ansBtn.getAttribute("data-answer");
+      const ans = document.getElementById(id);
+      if (!ans) return;
+      const open = ans.style.display === "block";
+      ans.style.display = open ? "none" : "block";
+      ansBtn.textContent = open ? "عرض الإجابة" : "إخفاء الإجابة";
+      return;
+    }
+    const showAllBtn = e.target.closest("[data-showall]");
+    if (showAllBtn){
+      const slide = e.target.closest(".slide");
+      const answers = Array.from(slide.querySelectorAll(".answer"));
+      const anyClosed = answers.some(a => a.style.display !== "block");
+      answers.forEach(a => a.style.display = anyClosed ? "block" : "none");
+      slide.querySelectorAll(".btnAnswer").forEach(b => b.textContent = anyClosed ? "إخفاء الإجابة" : "عرض الإجابة");
+      showAllBtn.textContent = anyClosed ? "إخفاء كل الإجابات" : "عرض كل الإجابات";
+      return;
+    }
+  });
+
+  // Init
+  resizeCanvas();
+  setActiveTool("pen");
+  progress();
+
+  window.addEventListener("resize", () => {
+    saveBoardForSlide(idx);
+    resizeCanvas();
+    restoreBoardForSlide(idx);
+  });
+
+  // Ensure board restores for first slide
+  restoreBoardForSlide(0);
+</script>
+
+</body>
+</html>
