@@ -1,215 +1,444 @@
+
+You said:
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ضمائر النصب المتصلة (ناهِيك) — الصف الثامن</title>
-
   <style>
     :root{
-      --bg:#f6f8fc;
+      --max:1180px;
+      --r:18px;
+      --bg:#f7f9ff;
       --paper:#ffffff;
-      --ink:#0f172a;
-      --muted:#475569;
-      --line:#e5e7eb;
-      --shadow: 0 18px 45px rgba(15, 23, 42, .10);
+      --ink:#0b1220;
+      --muted:#55657c;
+      --line: rgba(15,23,42,.12);
+      --shadow: 0 22px 70px rgba(15,23,42,.10);
+      --shadow2: 0 12px 34px rgba(15,23,42,.08);
 
       --accent:#2563eb;
       --accent2:#16a34a;
-      --softBlue:#eef4ff;
-      --softGreen:#eefcf3;
+      --accent3:#f59e0b;
+      --danger:#ef4444;
 
-      --r:18px;
-      --max:1180px;
+      --softA: rgba(37,99,235,.10);
+      --softB: rgba(22,163,74,.10);
+      --softC: rgba(245,158,11,.10);
 
-      --h1: clamp(24px, 2.6vw, 38px);
+      --h1: clamp(26px, 2.8vw, 42px);
       --h2: clamp(18px, 2.1vw, 28px);
       --p:  clamp(16px, 1.35vw, 18px);
+
+      --headerH: 86px;
+      --ring: 0 0 0 4px rgba(37,99,235,.18);
+    }
+
+    html[data-theme="dark"]{
+      --bg:#070b14;
+      --paper:#0f172a;
+      --ink:#eaf1ff;
+      --muted:#a8b7d4;
+      --line: rgba(234,241,255,.12);
+      --shadow: 0 26px 90px rgba(0,0,0,.55);
+      --shadow2: 0 16px 52px rgba(0,0,0,.45);
+
+      --softA: rgba(96,165,250,.12);
+      --softB: rgba(34,197,94,.12);
+      --softC: rgba(245,158,11,.12);
+
+      --ring: 0 0 0 4px rgba(96,165,250,.20);
     }
 
     *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       font-family: system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif;
-      color: var(--ink);
+      color:var(--ink);
       background:
-        radial-gradient(900px 500px at 10% 0%, #eaf2ff, transparent 60%),
-        radial-gradient(900px 500px at 90% 10%, #eafbf0, transparent 60%),
+        radial-gradient(900px 540px at 12% 0%, var(--softA), transparent 62%),
+        radial-gradient(900px 540px at 88% 10%, var(--softB), transparent 62%),
+        radial-gradient(900px 540px at 55% 20%, rgba(245,158,11,.06), transparent 65%),
         var(--bg);
       min-height:100vh;
     }
 
+    button,input,select,textarea{font-family:inherit}
+    :focus-visible{outline:none; box-shadow: var(--ring); border-color: color-mix(in srgb, var(--accent) 55%, transparent)}
+
     header{
       position: sticky;
       top: 0;
-      z-index: 30;
-      background: rgba(246,248,252,.90);
-      backdrop-filter: blur(10px);
+      z-index: 60;
+      background: color-mix(in srgb, var(--paper) 78%, transparent);
+      backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--line);
     }
+
     .top{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 14px 16px;
+      padding: 12px 16px 10px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 12px;
       flex-wrap:wrap;
     }
+
     .brand{
       display:flex;
       align-items:center;
       gap: 12px;
-      min-width: 280px;
+      min-width: 290px;
     }
+
     .mark{
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      background: linear-gradient(135deg, var(--accent), #60a5fa);
+      width: 44px;
+      height: 44px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 88%, white), var(--accent));
       display:grid;
       place-items:center;
-      box-shadow: 0 10px 25px rgba(37,99,235,.20);
+      box-shadow: 0 16px 40px color-mix(in srgb, var(--accent) 22%, transparent);
       color:white;
-      font-weight:1000;
+      font-weight: 1000;
+      letter-spacing:.6px;
+      user-select:none;
     }
-    .brand h1{ margin:0; font-size:14px; font-weight:1000; }
-    .brand small{ display:block; margin-top:3px; color:var(--muted); font-weight:800; font-size:12px; }
+
+    .brand h1{
+      margin:0;
+      font-size:14px;
+      font-weight:1000;
+      letter-spacing:.2px;
+    }
+
+    .brand small{
+      display:block;
+      margin-top:4px;
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+      line-height:1.6;
+    }
 
     .controls{
       display:flex;
       align-items:center;
-      gap: 10px;
+      gap:10px;
       flex-wrap:wrap;
       justify-content:flex-end;
     }
+
     .pill{
       padding: 9px 12px;
       border-radius: 999px;
-      background: white;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
       border: 1px solid var(--line);
-      box-shadow: 0 8px 20px rgba(15,23,42,.06);
+      box-shadow: var(--shadow2);
       color: var(--muted);
       font-weight: 1000;
       user-select:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
     }
+
+    .pill strong{ color: var(--ink); font-weight:1000 }
+
     .btn{
       cursor:pointer;
       border: 1px solid var(--line);
-      background: white;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
       color: var(--ink);
-      border-radius: 12px;
+      border-radius: 14px;
       padding: 10px 12px;
       font-weight: 1000;
-      box-shadow: 0 8px 20px rgba(15,23,42,.06);
-      transition: .15s transform, .15s box-shadow, .15s border-color;
+      box-shadow: var(--shadow2);
+      transition: transform .14s ease, box-shadow .14s ease, filter .14s ease, border-color .14s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
     }
-    .btn:hover{ border-color:#cbd5e1; box-shadow:0 12px 26px rgba(15,23,42,.10); }
-    .btn:active{ transform: translateY(1px) }
+
+    .btn:hover{
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--ink) 12%, transparent);
+      box-shadow: var(--shadow);
+    }
+
+    .btn:active{ transform: translateY(0px) scale(.99) }
+    .btn:disabled{ opacity:.55; cursor:not-allowed; transform:none }
+
     .btn.primary{
-      background: var(--accent);
-      border-color: rgba(37,99,235,.25);
+      background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 55%, white));
       color:white;
-      box-shadow: 0 12px 26px rgba(37,99,235,.20);
+      border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+      box-shadow: 0 18px 56px color-mix(in srgb, var(--accent) 20%, transparent);
     }
-    .btn:disabled{ opacity:.5; cursor:not-allowed }
+
+    .btn.good{
+      background: linear-gradient(135deg, var(--accent2), color-mix(in srgb, var(--accent2) 55%, white));
+      color:white;
+      border-color: color-mix(in srgb, var(--accent2) 35%, transparent);
+      box-shadow: 0 18px 56px color-mix(in srgb, var(--accent2) 18%, transparent);
+    }
+
+    .btn.warn{
+      background: linear-gradient(135deg, var(--accent3), color-mix(in srgb, var(--accent3) 55%, white));
+      color:#1b1202;
+      border-color: color-mix(in srgb, var(--accent3) 35%, transparent);
+      box-shadow: 0 18px 56px color-mix(in srgb, var(--accent3) 18%, transparent);
+    }
+
+    .btn.ghost{
+      background: transparent;
+      box-shadow:none;
+    }
+
+    .seg{
+      display:inline-flex;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow:hidden;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      box-shadow: var(--shadow2);
+    }
+
+    .seg button{
+      border: none;
+      background: transparent;
+      padding: 10px 12px;
+      cursor:pointer;
+      color: var(--muted);
+      font-weight: 1000;
+      transition: background .14s ease, color .14s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .seg button.active{
+      background: color-mix(in srgb, var(--accent) 14%, transparent);
+      color: var(--accent);
+    }
+
+    .jump{
+      position: relative;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 10px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      box-shadow: var(--shadow2);
+      min-width: 260px;
+    }
+
+    .jump input{
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    .jump input::placeholder{ color: color-mix(in srgb, var(--muted) 85%, transparent) }
 
     .progressWrap{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 0 16px 14px;
+      padding: 0 16px 12px;
     }
+
     .track{
       height: 10px;
       border-radius: 999px;
-      background: white;
+      background: color-mix(in srgb, var(--paper) 90%, transparent);
       border: 1px solid var(--line);
       overflow:hidden;
+      box-shadow: 0 12px 30px rgba(15,23,42,.05);
     }
+
     .bar{
       height:100%;
       width:0%;
-      background: linear-gradient(90deg, var(--accent), #60a5fa);
-      transition: width .25s ease;
+      background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 55%, white));
+      transition: width .26s ease;
     }
 
     main{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 18px 16px 26px;
+      padding: 18px 16px 18px;
     }
 
     .slide{
       display:none;
-      background: var(--paper);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
       border: 1px solid var(--line);
       border-radius: var(--r);
       box-shadow: var(--shadow);
       overflow:hidden;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: opacity .20s ease, transform .20s ease;
     }
-    .slide.active{ display:block }
+
+    .slide.active{
+      display:block;
+      transform: translateY(0);
+      opacity: 1;
+    }
 
     .slideHeader{
       padding: 18px 20px;
       border-bottom: 1px solid var(--line);
       background:
-        linear-gradient(90deg, var(--softBlue), transparent 60%),
-        linear-gradient(270deg, var(--softGreen), transparent 55%);
+        radial-gradient(900px 260px at 12% 0%, var(--softA), transparent 60%),
+        radial-gradient(900px 260px at 88% 10%, var(--softB), transparent 60%),
+        radial-gradient(900px 260px at 55% 0%, var(--softC), transparent 70%);
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
       gap: 16px;
       flex-wrap:wrap;
     }
+
     .slideHeader .big{
       margin:0;
       font-size: var(--h1);
-      line-height: 1.15;
+      line-height: 1.12;
       font-weight: 1100;
+      letter-spacing:.2px;
     }
+
     .slideHeader .sub{
-      margin:8px 0 0;
+      margin:10px 0 0;
       color: var(--muted);
       font-weight: 800;
       font-size: 14px;
-      line-height:1.7;
-      max-width: 900px;
+      line-height:1.75;
+      max-width: 920px;
     }
 
+    .metaRow{
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top: 10px;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      font-weight: 1000;
+      color: var(--muted);
+      box-shadow: 0 12px 30px rgba(15,23,42,.06);
+      user-select:none;
+    }
+
+    .chip b{ color: var(--ink) }
+
     .body{
-      padding: 18px 20px 10px;
+      padding: 18px 20px 18px;
       display:grid;
       grid-template-columns: 1fr;
       gap: 14px;
     }
 
+    .grid2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 860px){
+      .grid2{ grid-template-columns: 1fr; }
+    }
+
     .card{
       border: 1px solid var(--line);
-      border-radius: 16px;
-      background: white;
+      border-radius: 18px;
+      background: color-mix(in srgb, var(--paper) 96%, transparent);
       padding: 16px;
+      box-shadow: var(--shadow2);
     }
-    .card h3{ margin:0 0 10px; font-size: var(--h2); font-weight: 1100; }
-    .card p{ margin:0 0 12px; font-size: var(--p); line-height: 1.9; }
-    .muted{color:var(--muted)}
+
+    html[data-theme="dark"] .card{
+      box-shadow: 0 18px 56px rgba(0,0,0,.34);
+    }
+
+    .card h3{
+      margin:0 0 10px;
+      font-size: var(--h2);
+      font-weight: 1100;
+      letter-spacing:.2px;
+    }
+
+    .card p{
+      margin:0 0 12px;
+      font-size: var(--p);
+      line-height: 1.95;
+      color: color-mix(in srgb, var(--ink) 94%, transparent);
+    }
+
     .bullets{
       margin: 10px 0 0;
       padding: 0 18px 0 0;
       font-size: var(--p);
-      line-height: 1.9;
+      line-height: 1.95;
     }
+
     .bullets li{ margin: 8px 0 }
 
-    /* QA */
-    .qa{
-      margin-top: 12px;
+    .callout{
       border-radius: 16px;
+      border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+      padding: 12px 12px;
+      font-weight: 900;
+      color: color-mix(in srgb, var(--ink) 92%, transparent);
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      line-height:1.9;
+    }
+
+    .callout .dot{
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 20%, transparent);
+      margin-top: 6px;
+      flex: 0 0 auto;
+    }
+
+    .qa{
+      margin-top: 14px;
+      border-radius: 18px;
       border: 1px solid var(--line);
       overflow:hidden;
+      background: color-mix(in srgb, var(--paper) 94%, transparent);
+      box-shadow: 0 12px 36px rgba(15,23,42,.05);
     }
+
     .qaTop{
-      background: var(--softBlue);
+      background: linear-gradient(90deg, var(--softA), var(--softB));
       border-bottom: 1px solid var(--line);
       padding: 12px 14px;
       display:flex;
@@ -218,29 +447,55 @@
       gap: 10px;
       flex-wrap:wrap;
     }
-    .qaTop strong{ color: var(--accent); font-weight: 1100; }
+
+    .qaTop strong{
+      color: var(--accent);
+      font-weight: 1100;
+    }
+
+    .qaTop .mini{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color: var(--muted);
+      font-weight: 900;
+      font-size: 12px;
+    }
+
     .btnSmall{
       cursor:pointer;
-      border: 1px solid var(--line);
-      background: white;
+      border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
       color: var(--ink);
-      padding: 8px 10px;
-      border-radius: 12px;
-      font-weight: 1000;
+      padding: 8px 12px;
+      border-radius: 14px;
+      font-weight: 1100;
+      transition: transform .14s ease, box-shadow .14s ease;
+      box-shadow: var(--shadow2);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
     }
+
+    .btnSmall:hover{ transform: translateY(-1px); box-shadow: var(--shadow) }
+    .btnSmall:active{ transform: translateY(0px) scale(.99) }
+
     .qList{
       margin:0;
       padding: 12px 18px 10px;
       list-style: decimal;
       font-size: var(--p);
-      line-height: 1.9;
+      line-height: 1.95;
     }
+
     .qList li{
       margin: 10px 0 14px;
       padding-bottom: 12px;
-      border-bottom: 1px dashed #e2e8f0;
+      border-bottom: 1px dashed color-mix(in srgb, var(--muted) 35%, transparent);
     }
+
     .qList li:last-child{ border-bottom:none; padding-bottom:0 }
+
     .qRow{
       display:flex;
       align-items:flex-start;
@@ -248,108 +503,659 @@
       gap: 12px;
       flex-wrap:wrap;
     }
+
     .qText{ flex:1; min-width: 260px }
+
     .btnAnswer{
       cursor:pointer;
-      border: 1px solid rgba(37,99,235,.25);
-      background: rgba(37,99,235,.10);
+      border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
       color: var(--accent);
-      padding: 8px 10px;
-      border-radius: 12px;
+      padding: 8px 12px;
+      border-radius: 14px;
       font-weight: 1100;
       white-space:nowrap;
+      transition: transform .14s ease, box-shadow .14s ease;
+      box-shadow: 0 12px 30px color-mix(in srgb, var(--accent) 10%, transparent);
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
     }
+
+    .btnAnswer:hover{ transform: translateY(-1px); box-shadow: 0 18px 46px color-mix(in srgb, var(--accent) 14%, transparent) }
+    .btnAnswer:active{ transform: translateY(0px) scale(.99) }
+
     .answer{
       display:none;
       margin-top: 10px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      background: #eefcf3;
-      border: 1px solid rgba(22,163,74,.25);
-      color: #065f46;
-      font-weight: 900;
+      padding: 12px 12px;
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--accent2) 10%, transparent);
+      border: 1px solid color-mix(in srgb, var(--accent2) 22%, transparent);
+      color: color-mix(in srgb, var(--ink) 92%, transparent);
+      font-weight: 1000;
     }
+
     .answer strong{ color: var(--accent2) }
 
-    /* BIG WHITEBOARD BELOW */
-    .boardPanel{
-      margin: 0 20px 20px;
+    .practice{
+      margin-top: 14px;
+      border-radius: 18px;
       border: 1px solid var(--line);
-      border-radius: 16px;
-      background: #fff;
-      padding: 14px;
+      overflow:hidden;
+      background: color-mix(in srgb, var(--paper) 94%, transparent);
+      box-shadow: var(--shadow2);
     }
-    .boardTitle{
+
+    .practiceTop{
+      background: linear-gradient(90deg, var(--softA), var(--softC));
+      border-bottom: 1px solid var(--line);
+      padding: 12px 14px;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap: 10px;
       flex-wrap:wrap;
-      margin-bottom: 10px;
     }
-    .boardTitle h3{ margin:0; font-size: 18px; font-weight: 1100; }
-    .boardTitle .hint{ color: var(--muted); font-weight: 800; font-size: 12px; }
+
+    .practiceTop strong{ color: var(--accent); font-weight:1100 }
+    .practiceBody{ padding: 12px 14px 14px }
+
+    .items{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 900px){
+      .items{ grid-template-columns: 1fr; }
+    }
+
+    .item{
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 12px;
+      background: color-mix(in srgb, var(--paper) 96%, transparent);
+      box-shadow: 0 12px 30px rgba(15,23,42,.06);
+    }
+
+    .item .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+
+    .item .prompt{
+      font-weight: 1000;
+      line-height: 1.8;
+      font-size: 16px;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .item input{
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      color: var(--ink);
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 1100;
+      min-width: 170px;
+      outline:none;
+    }
+
+    .item .feedback{
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 1100;
+      display:none;
+      border: 1px solid var(--line);
+    }
+
+    .ok{
+      background: color-mix(in srgb, var(--accent2) 12%, transparent);
+      border-color: color-mix(in srgb, var(--accent2) 22%, transparent);
+      color: color-mix(in srgb, var(--ink) 92%, transparent);
+    }
+
+    .bad{
+      background: color-mix(in srgb, var(--danger) 12%, transparent);
+      border-color: color-mix(in srgb, var(--danger) 22%, transparent);
+      color: color-mix(in srgb, var(--ink) 92%, transparent);
+    }
+
+    .mcq{
+      margin-top: 10px;
+      display:flex;
+      gap: 8px;
+      flex-wrap:wrap;
+    }
+
+    .choice{
+      cursor:pointer;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      color: var(--ink);
+      padding: 10px 12px;
+      border-radius: 999px;
+      font-weight: 1100;
+      box-shadow: 0 12px 30px rgba(15,23,42,.06);
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+      user-select:none;
+    }
+
+    .choice:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      border-color: color-mix(in srgb, var(--ink) 12%, transparent);
+    }
+
+    .choice.active{
+      border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
+      color: var(--accent);
+    }
+
+    .choice.good{
+      border-color: color-mix(in srgb, var(--accent2) 35%, transparent);
+      background: color-mix(in srgb, var(--accent2) 12%, transparent);
+      color: var(--accent2);
+    }
+
+    .choice.bad{
+      border-color: color-mix(in srgb, var(--danger) 35%, transparent);
+      background: color-mix(in srgb, var(--danger) 12%, transparent);
+      color: var(--danger);
+    }
+
+    .drawerBackdrop{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.38);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s ease;
+      z-index: 80;
+    }
+
+    .drawerBackdrop.open{
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer{
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: min(380px, 94vw);
+      background: color-mix(in srgb, var(--paper) 96%, transparent);
+      border-left: 1px solid var(--line);
+      box-shadow: 0 22px 80px rgba(0,0,0,.30);
+      transform: translateX(16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform .18s ease, opacity .18s ease;
+      z-index: 90;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .drawer.open{
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawerHead{
+      padding: 14px 14px;
+      border-bottom: 1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+    }
+
+    .drawerHead h3{
+      margin:0;
+      font-weight: 1100;
+      font-size: 15px;
+    }
+
+    .drawerSearch{
+      padding: 10px 14px 0;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .drawerSearch input{
+      width: 100%;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      color: var(--ink);
+      padding: 11px 12px;
+      border-radius: 16px;
+      font-weight: 1000;
+      outline:none;
+    }
+
+    .drawerBody{
+      padding: 10px 10px 14px;
+      overflow:auto;
+    }
+
+    .slideItem{
+      width: 100%;
+      text-align:right;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      border-radius: 16px;
+      padding: 12px 12px;
+      margin: 8px 0;
+      cursor:pointer;
+      font-weight: 1100;
+      color: var(--ink);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+      box-shadow: 0 12px 34px rgba(15,23,42,.06);
+    }
+
+    .slideItem:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      border-color: color-mix(in srgb, var(--ink) 12%, transparent);
+    }
+
+    .slideItem .n{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width: 38px;
+      height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-weight: 1100;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      user-select:none;
+    }
+
+    .slideItem.active{
+      border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+      background: color-mix(in srgb, var(--accent) 10%, transparent);
+    }
+
+    .toastWrap{
+      position: fixed;
+      left: 14px;
+      bottom: 14px;
+      z-index: 120;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      pointer-events:none;
+      max-width: min(420px, 92vw);
+    }
+
+    .toast{
+      pointer-events:auto;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 12px 12px;
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      animation: pop .18s ease both;
+    }
+
+    @keyframes pop{
+      from{ transform: translateY(10px); opacity: 0 }
+      to{ transform: translateY(0); opacity: 1 }
+    }
+
+    .toast .icon{
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      display:grid;
+      place-items:center;
+      font-weight: 1100;
+      color: white;
+      flex: 0 0 auto;
+      box-shadow: 0 14px 36px rgba(0,0,0,.18);
+      user-select:none;
+    }
+
+    .toast .txt{ flex: 1; min-width: 180px }
+    .toast .txt strong{ display:block; font-weight:1100 }
+    .toast .txt div{ color: var(--muted); font-weight: 900; margin-top: 4px; line-height:1.6 }
+    .toast .close{
+      cursor:pointer;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      border-radius: 12px;
+      padding: 6px 10px;
+      font-weight: 1100;
+    }
+
+    .boardPanel{
+      max-width: var(--max);
+      margin: 0 auto 18px;
+      padding: 16px;
+    }
+
+    .boardCard{
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .boardHeader{
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(900px 260px at 12% 0%, var(--softA), transparent 60%),
+        radial-gradient(900px 260px at 88% 10%, var(--softB), transparent 60%),
+        radial-gradient(900px 260px at 55% 0%, var(--softC), transparent 70%);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+
+    .boardHeader h3{
+      margin:0;
+      font-size: 18px;
+      font-weight: 1100;
+    }
+
+    .boardHeader .hint{
+      color: var(--muted);
+      font-weight: 1000;
+      font-size: 12px;
+    }
 
     .tools{
+      padding: 12px 14px;
       display:flex;
       align-items:center;
       gap: 8px;
       flex-wrap:wrap;
-      margin-bottom: 10px;
     }
+
     .toolBtn{
       cursor:pointer;
       border: 1px solid var(--line);
-      background: white;
-      border-radius: 12px;
-      padding: 8px 10px;
-      font-weight: 1000;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      border-radius: 16px;
+      padding: 8px 12px;
+      font-weight: 1100;
+      box-shadow: var(--shadow2);
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      white-space:nowrap;
+      user-select:none;
     }
+
+    .toolBtn:hover{
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+      border-color: color-mix(in srgb, var(--ink) 12%, transparent);
+    }
+
+    .toolBtn:active{ transform: translateY(0px) scale(.99) }
+
     .toolBtn.active{
-      border-color: rgba(37,99,235,.35);
-      background: rgba(37,99,235,.08);
+      border-color: color-mix(in srgb, var(--accent) 35%, transparent);
+      background: color-mix(in srgb, var(--accent) 12%, transparent);
       color: var(--accent);
+      box-shadow: 0 18px 56px color-mix(in srgb, var(--accent) 16%, transparent);
     }
+
     .tools label{
       display:flex;
       align-items:center;
-      gap: 6px;
+      gap: 8px;
       border: 1px solid var(--line);
       padding: 7px 10px;
-      border-radius: 12px;
-      background: white;
-      font-weight: 900;
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      font-weight: 1000;
       color: var(--muted);
+      box-shadow: var(--shadow2);
+      white-space:nowrap;
     }
-    input[type="color"]{ width: 26px; height: 26px; border:none; background: transparent; padding:0; }
-    input[type="range"]{ width: 180px; }
+
+    input[type="color"]{
+      width: 28px;
+      height: 28px;
+      border:none;
+      background: transparent;
+      padding:0;
+    }
+
+    input[type="range"]{ width: 160px; }
 
     .boardWrap{
       position: relative;
-      border-radius: 14px;
+      border-radius: 18px;
       border: 1px solid var(--line);
       background:
-        linear-gradient(#ffffff, #ffffff),
-        repeating-linear-gradient(0deg, transparent, transparent 26px, rgba(15,23,42,.06) 26px, rgba(15,23,42,.06) 27px);
+        linear-gradient(var(--paper), var(--paper)),
+        repeating-linear-gradient(0deg, transparent, transparent 28px, color-mix(in srgb, var(--ink) 6%, transparent) 28px, color-mix(in srgb, var(--ink) 6%, transparent) 29px);
       overflow:hidden;
-      height: min(60vh, 520px); /* BIGGER */
+      height: min(62vh, 560px);
       touch-action: none;
+      margin: 0 14px 14px;
+      box-shadow: 0 14px 50px rgba(15,23,42,.08);
     }
+
     canvas{
       position:absolute;
       inset:0;
       width:100%;
       height:100%;
     }
+
     .boardWatermark{
       position:absolute;
       left: 12px;
       bottom: 10px;
       font-size: 12px;
-      font-weight: 900;
-      color: rgba(71,85,105,.55);
+      font-weight: 1100;
+      color: color-mix(in srgb, var(--muted) 75%, transparent);
       user-select:none;
       pointer-events:none;
+      background: color-mix(in srgb, var(--paper) 75%, transparent);
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .modalBack{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.42);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .18s ease;
+      z-index: 140;
+    }
+
+    .modalBack.open{
+      opacity: 1;
+      pointer-events:auto;
+    }
+
+    .modal{
+      position: fixed;
+      inset: 0;
+      display:grid;
+      place-items:center;
+      z-index: 150;
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .18s ease;
+      padding: 16px;
+    }
+
+    .modal.open{
+      opacity: 1;
+      pointer-events:auto;
+    }
+
+    .modalCard{
+      width: min(760px, 96vw);
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 94%, transparent);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .modalHead{
+      padding: 14px 14px;
+      border-bottom: 1px solid var(--line);
+      background:
+        radial-gradient(900px 260px at 12% 0%, var(--softA), transparent 60%),
+        radial-gradient(900px 260px at 88% 10%, var(--softB), transparent 60%),
+        radial-gradient(900px 260px at 55% 0%, var(--softC), transparent 70%);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+
+    .modalHead h3{
+      margin:0;
+      font-size: 16px;
+      font-weight: 1100;
+    }
+
+    .modalBody{
+      padding: 14px 14px 14px;
+      display:grid;
+      gap: 12px;
+    }
+
+    .modalRow{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 96%, transparent);
+      border-radius: 18px;
+      padding: 12px 12px;
+      box-shadow: var(--shadow2);
+    }
+
+    .modalRow .left{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      min-width: 260px;
+      flex: 1;
+    }
+
+    .modalRow label{
+      font-weight: 1100;
+      color: var(--muted);
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .modalRow input[type="number"]{
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      color: var(--ink);
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 1100;
+      width: 130px;
+      outline:none;
+    }
+
+    .modalRow select{
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      color: var(--ink);
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 1100;
+      outline:none;
+    }
+
+    .quizStage{
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 96%, transparent);
+      border-radius: 18px;
+      padding: 12px 12px;
+      box-shadow: var(--shadow2);
+    }
+
+    .quizStage .q{
+      font-weight: 1100;
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .quizStage .sub{
+      margin-top: 6px;
+      color: var(--muted);
+      font-weight: 1000;
+      line-height:1.7;
+    }
+
+    .quizStage .ansRow{
+      margin-top: 12px;
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .quizStage input{
+      flex: 1;
+      min-width: 220px;
+      border: 1px solid var(--line);
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
+      color: var(--ink);
+      padding: 11px 12px;
+      border-radius: 14px;
+      font-weight: 1100;
+      outline:none;
+    }
+
+    .quizStage .result{
+      margin-top: 10px;
+      display:none;
+      padding: 10px 12px;
+      border-radius: 14px;
+      font-weight: 1100;
+      border: 1px solid var(--line);
     }
 
     footer{
@@ -357,542 +1163,2840 @@
       margin: 0 auto;
       padding: 0 16px 18px;
       color: var(--muted);
-      font-weight: 800;
+      font-weight: 1000;
       display:flex;
       justify-content:space-between;
       gap: 10px;
       flex-wrap:wrap;
     }
+
     .kbd{
       display:inline-block;
       border: 1px solid var(--line);
-      background: white;
+      background: color-mix(in srgb, var(--paper) 92%, transparent);
       padding: 6px 10px;
-      border-radius: 10px;
-      font-weight: 1000;
+      border-radius: 12px;
+      font-weight: 1100;
       color: var(--ink);
+      box-shadow: var(--shadow2);
+    }
+
+    body.presenting{
+      overflow:hidden;
+      background: var(--bg);
+    }
+
+    body.presenting header{
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+    }
+
+    body.presenting main{
+      max-width: none;
+      padding: calc(var(--headerH) + 14px) 16px 16px;
+      height: 100vh;
+      overflow:auto;
+    }
+
+    body.presenting .slide{
+      max-width: min(var(--max), 1120px);
+      margin: 0 auto;
+    }
+
+    body.presenting footer{ display:none; }
+
+    .boardOverlayBack{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.40);
+      opacity: 0;
+      pointer-events:none;
+      transition: opacity .18s ease;
+      z-index: 145;
+    }
+
+    .boardOverlayBack.open{
+      opacity: 1;
+      pointer-events:auto;
+    }
+
+    .boardOverlay{
+      position: fixed;
+      inset: 0;
+      padding: 16px;
+      display:none;
+      z-index: 160;
+    }
+
+    .boardOverlay.open{ display:block; }
+
+    .boardOverlay .boardPanel{
+      max-width: none;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      display:grid;
+      place-items:center;
+    }
+
+    .boardOverlay .boardCard{
+      width: min(1200px, 96vw);
+      height: min(820px, 92vh);
+      display:flex;
+      flex-direction:column;
+    }
+
+    .boardOverlay .boardWrap{
+      height: auto;
+      flex: 1;
+      margin: 0 14px 14px;
+    }
+
+    @media (max-width: 560px){
+      .jump{ min-width: 210px; }
+      input[type="range"]{ width: 130px; }
+      .brand{ min-width: 250px; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .btn,.btnSmall,.slide,.drawer,.drawerBackdrop,.modal,.modalBack,.toast,.slideItem,.choice{ transition:none; animation:none; }
     }
   </style>
 </head>
 
 <body>
+  <div class="toastWrap" id="toastWrap" aria-live="polite" aria-atomic="true"></div>
 
-<header>
-  <div class="top">
-    <div class="brand">
-      <div class="mark">ن</div>
-      <div>
-        <h1>ضمائر النصب المتصلة (ناهِيك) — عرض تفاعلي</h1>
-        <small>الصف الثامن · الإمارات · الفصل الدراسي الثاني · سبورة كبيرة أسفل الشريحة</small>
+  <div class="drawerBackdrop" id="drawerBackdrop"></div>
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawerHead">
+      <h3>قائمة الشرائح</h3>
+      <button class="btn" id="closeDrawer" type="button">✖️ إغلاق</button>
+    </div>
+    <div class="drawerSearch">
+      <input id="drawerSearch" placeholder="ابحث عن عنوان شريحة..." />
+    </div>
+    <div class="drawerBody" id="drawerBody"></div>
+  </aside>
+
+  <div class="modalBack" id="modalBack"></div>
+  <div class="modal" id="quizModal" aria-hidden="true">
+    <div class="modalCard">
+      <div class="modalHead">
+        <h3>وضع الاختبار السريع</h3>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button class="btn" id="quizClose" type="button">✖️ إغلاق</button>
+        </div>
       </div>
-    </div>
-
-    <div class="controls">
-      <div class="pill" id="counter">1 / 15</div>
-      <button class="btn" id="prev">السابق</button>
-      <button class="btn primary" id="next">التالي</button>
-    </div>
-  </div>
-
-  <div class="progressWrap">
-    <div class="track"><div class="bar" id="bar"></div></div>
-  </div>
-</header>
-
-<main id="deck">
-
-  <!-- Slide 1 -->
-  <section class="slide active" data-title="العنوان">
-    <div class="slideHeader">
-      <div>
-        <h2 class="big">ضمائر النصب المتصلة (ناهِيك)</h2>
-        <p class="sub">كل شريحة فيها شرح + أسئلة وإجابات. والسبورة الكبيرة بالأسفل للكتابة والرسم (وتحفظ رسمك لكل شريحة).</p>
-      </div>
-    </div>
-    <div class="body">
-      <div class="card">
-        <h3>الفكرة الأساسية</h3>
-        <p>ضمائر النصب المتصلة هي ضمائر <b>تلتصق بالفعل</b> وتدل على من وقع عليه الفعل، وتكون <b>في محل مفعول به</b>.</p>
-        <ul class="bullets">
-          <li>بدون مسافة بين الفعل والضمير.</li>
-          <li>نفهمها من معنى الجملة.</li>
-          <li>اختصار الحفظ: <b>ناهِيك</b>.</li>
-        </ul>
-
-        <div class="qa">
-          <div class="qaTop">
-            <div><strong>أسئلة</strong></div>
-            <button class="btnSmall" data-showall>عرض كل الإجابات</button>
+      <div class="modalBody">
+        <div class="modalRow">
+          <div class="left">
+            <label>عدد الأسئلة <input type="number" id="quizCount" min="3" max="40" value="10"></label>
+            <label>الوقت (دقيقة) <input type="number" id="quizMinutes" min="1" max="60" value="7"></label>
+            <label>النوع
+              <select id="quizType">
+                <option value="mix">مختلط</option>
+                <option value="fill">إكمال</option>
+                <option value="mcq">اختيار</option>
+              </select>
+            </label>
           </div>
-          <ol class="qList">
-            <li>
-              <div class="qRow">
-                <div class="qText">ما معنى “ضمير”؟</div>
-                <button class="btnAnswer" data-answer="s1a1">عرض الإجابة</button>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn good" id="quizStart" type="button">▶️ ابدأ</button>
+            <button class="btn warn" id="quizReset" type="button">🔁 تصفير</button>
+          </div>
+        </div>
+
+        <div class="quizStage" id="quizStage" style="display:none;">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;">
+            <div class="chip"><b id="quizProg">0/0</b> سؤال</div>
+            <div class="chip">⏳ <b id="quizTimer">00:00</b></div>
+            <div class="chip">⭐ <b id="quizScore">0</b></div>
+          </div>
+
+          <div style="margin-top:12px;">
+            <div class="q" id="quizQ">...</div>
+            <div class="sub" id="quizSub">...</div>
+
+            <div class="ansRow" id="quizAnsRow">
+              <input id="quizInput" placeholder="اكتب الإجابة هنا..." />
+              <button class="btn primary" id="quizSubmit" type="button">إرسال</button>
+              <button class="btn" id="quizSkip" type="button">تخطي</button>
+            </div>
+
+            <div class="mcq" id="quizChoices" style="display:none;"></div>
+            <div class="result" id="quizResult"></div>
+          </div>
+        </div>
+
+        <div class="modalRow" id="quizSummary" style="display:none;">
+          <div class="left">
+            <div class="chip">النتيجة: <b id="quizFinalScore">0</b></div>
+            <div class="chip">صح: <b id="quizRight">0</b></div>
+            <div class="chip">خطأ: <b id="quizWrong">0</b></div>
+            <div class="chip">تم: <b id="quizDone">0</b></div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn good" id="quizSaveToScore" type="button">✅ أضف للنقاط</button>
+            <button class="btn" id="quizBack" type="button">⬅️ رجوع</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="boardOverlayBack" id="boardOverlayBack"></div>
+  <div class="boardOverlay" id="boardOverlay" aria-hidden="true">
+    <section class="boardPanel">
+      <div class="boardCard">
+        <div class="boardHeader">
+          <div>
+            <h3>السبورة</h3>
+            <div class="hint">Undo/Redo + Shapes + Text + حفظ تلقائي لكل شريحة</div>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <button class="btn" id="boardOverlayClose" type="button">✖️ إغلاق</button>
+          </div>
+        </div>
+
+        <div class="tools">
+          <button class="toolBtn active" data-tool="pen" type="button">✍️ قلم</button>
+          <button class="toolBtn" data-tool="highlighter" type="button">🖍️ هايلايتر</button>
+          <button class="toolBtn" data-tool="eraser" type="button">🧽 ممحاة</button>
+          <button class="toolBtn" data-tool="line" type="button">📏 خط</button>
+          <button class="toolBtn" data-tool="rect" type="button">▭ مربع</button>
+          <button class="toolBtn" data-tool="circle" type="button">◯ دائرة</button>
+          <button class="toolBtn" data-tool="arrow" type="button">➤ سهم</button>
+          <button class="toolBtn" data-tool="text" type="button">🔤 نص</button>
+
+          <label>🎨 لون <input type="color" id="color2" value="#2563eb"></label>
+          <label>📏 حجم <input type="range" id="size2" min="2" max="36" value="6"></label>
+          <label>🌫️ شفافية <input type="range" id="alpha2" min="5" max="100" value="100"></label>
+
+          <button class="toolBtn" id="undo2" type="button">↩️ Undo</button>
+          <button class="toolBtn" id="redo2" type="button">↪️ Redo</button>
+          <button class="toolBtn" id="clear2" type="button">🗑️ مسح</button>
+          <button class="toolBtn" id="save2" type="button">⬇️ صورة</button>
+        </div>
+
+        <div class="boardWrap">
+          <canvas id="board2"></canvas>
+          <div class="boardWatermark" id="wm2">Slide board memory</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <header>
+    <div class="top">
+      <div class="brand">
+        <div class="mark">ن</div>
+        <div>
+          <h1>ضمائر النصب المتصلة (ناهِيك) — تفاعلي</h1>
+          <small>UI مطوّر + اختبار + سبورة ذكية + حفظ تلقائي + تصدير/استيراد</small>
+        </div>
+      </div>
+
+      <div class="controls">
+        <div class="pill"><strong id="counter">1 / 15</strong> <span>•</span> ⭐ <strong id="scorePill">0</strong></div>
+
+        <button class="btn" id="prev" type="button">⬅️ السابق</button>
+        <button class="btn primary" id="next" type="button">التالي ➡️</button>
+
+        <div class="jump">
+          <span style="font-weight:1100;color:var(--muted);">🔎</span>
+          <input id="jumpInput" placeholder="رقم أو عنوان الشريحة..." />
+        </div>
+
+        <button class="btn" id="openDrawer" type="button">📚 القائمة</button>
+
+        <div class="seg" role="tablist" aria-label="Theme and Modes">
+          <button id="themeBtn" type="button" class="active">🌙 Theme</button>
+          <button id="presentBtn" type="button">🖥️ Present</button>
+          <button id="fullBtn" type="button">⛶ Full</button>
+        </div>
+
+        <button class="btn" id="boardBtn" type="button">✍️ Board</button>
+        <button class="btn good" id="quizBtn" type="button">🧠 Quiz</button>
+
+        <button class="btn" id="exportBtn" type="button">📦 Export</button>
+        <button class="btn" id="importBtn" type="button">📥 Import</button>
+        <input id="importFile" type="file" accept="application/json" style="display:none;" />
+
+        <button class="btn warn" id="resetBtn" type="button">🧨 Reset</button>
+      </div>
+    </div>
+
+    <div class="progressWrap">
+      <div class="track"><div class="bar" id="bar"></div></div>
+    </div>
+  </header>
+
+  <main id="deck">
+    <section class="slide active" data-title="العنوان">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">ضمائر النصب المتصلة (ناهِيك)</h2>
+          <p class="sub">تنقّل بالأسهم أو الأزرار. كل شريحة فيها شرح + أسئلة + تدريب. نقاطك تزيد لما تحل التمارين. السبورة تحفظ رسمك لكل شريحة تلقائيًا.</p>
+          <div class="metaRow">
+            <div class="chip">🎯 الهدف: <b>تمييز الضمير المتصل</b></div>
+            <div class="chip">🧩 مهارة: <b>تحديد المفعول به</b></div>
+            <div class="chip">⌨️ اختصارات: <b>← → Home End</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>الفكرة الأساسية</h3>
+            <p>ضمائر النصب المتصلة هي ضمائر <b>تلتصق بالفعل</b> وتدل على <b>من وقع عليه الفعل</b>، وتكون <b>في محل مفعول به</b>.</p>
+            <div class="callout"><div class="dot"></div><div>تذكّر: الضمير هنا لا يأتي منفصلًا. لا تكتب مسافة بين الفعل والضمير.</div></div>
+            <ul class="bullets">
+              <li>بدون مسافة بين الفعل والضمير.</li>
+              <li>نفهمها من معنى الجملة والسياق.</li>
+              <li>اختصار الحفظ: <b>ناهِيك</b>.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>فهم سريع</h3>
+            <p>اسأل نفسك: <b>من الذي فعل؟</b> (الفاعل) ثم اسأل: <b>على من وقع الفعل؟</b> (المفعول به) وستعرف الضمير بسهولة.</p>
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>أسئلة</strong>
+                  <div class="mini">افتح الإجابة أو اعرض الكل</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
               </div>
-              <div class="answer" id="s1a1"><strong>الإجابة:</strong> كلمة تحلّ محل الاسم لتجنّب التكرار وتوضيح المعنى.</div>
-            </li>
-            <li>
-              <div class="qRow">
-                <div class="qText">ما معنى “ضمائر النصب”؟</div>
-                <button class="btnAnswer" data-answer="s1a2">عرض الإجابة</button>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">ما معنى “ضمير”؟</div>
+                    <button class="btnAnswer" data-answer="s1a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s1a1"><strong>الإجابة:</strong> كلمة تحلّ محل الاسم لتجنب التكرار وتوضيح المعنى.</div>
+                </li>
+                <li>
+                  <div class="qRow">
+                    <div class="qText">ما معنى “ضمائر النصب”؟</div>
+                    <button class="btnAnswer" data-answer="s1a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s1a2"><strong>الإجابة:</strong> ضمائر تكون في محل <strong>مفعول به</strong> (أي وقع عليها الفعل).</div>
+                </li>
+              </ol>
+            </div>
+
+            <div class="practice" data-practice="p1">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>تدريب نقاط</strong>
+                  <div class="mini">كل إجابة صحيحة = +1</div>
+                </div>
+                <button class="btnSmall" data-check="p1" type="button">✅ تحقّق</button>
               </div>
-              <div class="answer" id="s1a2"><strong>الإجابة:</strong> ضمائر تأتي في محل <strong>مفعول به</strong> (أي وقع عليها الفعل).</div>
-            </li>
-          </ol>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">اكتب الضمير المتصل في: <b>أكرمته</b></div>
+                      <input data-ans="ه" placeholder="مثال: ه" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">اكتب الضمير المتصل في: <b>شكرني</b></div>
+                      <input data-ans="ني" placeholder="مثال: ني" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Slides 2–15 (same content as before but WITHOUT the side board).
-       To keep this message shorter, they are included compactly below. -->
-
-  <section class="slide" data-title="تعريف سريع">
-    <div class="slideHeader"><div><h2 class="big">تعريف سريع</h2><p class="sub">ضمير متصل + يدل على المفعول به (وقع عليه الفعل).</p></div></div>
-    <div class="body">
-      <div class="card">
-        <h3>مثال واضح</h3>
-        <p><b>أشكره</b> = فعل + (ه) ضمير متصل في محل مفعول به.</p>
-        <ul class="bullets">
-          <li>غائب: أشكره</li><li>مخاطب: أشكرك</li><li>متكلم: ذكرني</li><li>نحن: ساعدنا</li>
-        </ul>
-        <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-          <ol class="qList">
-            <li><div class="qRow"><div class="qText">ما موقعه غالبًا؟</div><button class="btnAnswer" data-answer="s2a1">عرض الإجابة</button></div><div class="answer" id="s2a1"><strong>الإجابة:</strong> في محل مفعول به.</div></li>
-            <li><div class="qRow"><div class="qText">استخرج من “أكرمته”.</div><button class="btnAnswer" data-answer="s2a2">عرض الإجابة</button></div><div class="answer" id="s2a2"><strong>الإجابة:</strong> (ه).</div></li>
-          </ol>
+    <section class="slide" data-title="تعريف سريع">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">تعريف سريع</h2>
+          <p class="sub">ضمير متصل يدل على المفعول به (وقع عليه الفعل). يجيء غالبًا في آخر الفعل.</p>
+          <div class="metaRow">
+            <div class="chip">🎯 ركّز على: <b>آخر الكلمة</b></div>
+            <div class="chip">✅ مثال: <b>أشكره</b></div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>مثال واضح</h3>
+            <p><b>أشكره</b> = فعل + (ه) ضمير متصل في محل مفعول به. السؤال: أشكرُ من؟ <b>هو</b>.</p>
+            <ul class="bullets">
+              <li>غائب: أشكره</li>
+              <li>مخاطب: أشكرك</li>
+              <li>متكلم: ذكرني</li>
+              <li>نحن: ساعدنا</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>لو حذفنا الضمير يتغيّر معنى الجملة، لأنه جزء من المفعول به.</div></div>
+          </div>
 
-  <section class="slide" data-title="ناهِيك">
-    <div class="slideHeader"><div><h2 class="big">اختصار الحفظ: ناهِيك</h2><p class="sub">مراجعة سريعة + لازم أمثلة.</p></div></div>
-    <div class="body">
-      <div class="card">
-        <h3>لماذا؟</h3>
-        <ul class="bullets"><li>يساعدك تتذكر بسرعة.</li><li>الدرجة تجي من التطبيق.</li></ul>
-        <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-          <ol class="qList">
-            <li><div class="qRow"><div class="qText">هل يكفي لوحده؟</div><button class="btnAnswer" data-answer="s3a1">عرض الإجابة</button></div><div class="answer" id="s3a1"><strong>الإجابة:</strong> لا، لازم تدريب.</div></li>
-            <li><div class="qRow"><div class="qText">صحّح: “شكر ني”.</div><button class="btnAnswer" data-answer="s3a2">عرض الإجابة</button></div><div class="answer" id="s3a2"><strong>الإجابة:</strong> “شكرني”.</div></li>
-          </ol>
+          <div class="card">
+            <h3>أسئلة سريعة</h3>
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>أسئلة</strong>
+                  <div class="mini">تأكد من الفعل + الضمير</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">ما موقعه غالبًا؟</div>
+                    <button class="btnAnswer" data-answer="s2a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s2a1"><strong>الإجابة:</strong> في محل مفعول به.</div>
+                </li>
+                <li>
+                  <div class="qRow">
+                    <div class="qText">استخرج الضمير من “أكرمته”.</div>
+                    <button class="btnAnswer" data-answer="s2a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s2a2"><strong>الإجابة:</strong> (ه).</div>
+                </li>
+              </ol>
+            </div>
+
+            <div class="practice" data-practice="p2">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>اختيار سريع</strong>
+                  <div class="mini">اختر الإجابة ثم تحقّق</div>
+                </div>
+                <button class="btnSmall" data-check="p2" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="item">
+                  <div class="prompt">في كلمة <b>رأيتك</b> الضمير هو:</div>
+                  <div class="mcq" data-mcq data-ans="ك">
+                    <div class="choice" data-choice="ه">ه</div>
+                    <div class="choice" data-choice="ك">ك</div>
+                    <div class="choice" data-choice="ني">ني</div>
+                    <div class="choice" data-choice="نا">نا</div>
+                  </div>
+                  <div class="feedback"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="slide" data-title="هاء الغائب">
-    <div class="slideHeader"><div><h2 class="big">هاء الغائب</h2><p class="sub">مثل: أشكره / أكرمه.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>أمثلة</h3>
-      <ul class="bullets"><li>أشكره (ه)</li><li>ساعدها (ها)</li><li>قابلهم (هم)</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">استخرج من “أكرمه”.</div><button class="btnAnswer" data-answer="s4a1">عرض الإجابة</button></div><div class="answer" id="s4a1"><strong>الإجابة:</strong> (ه).</div></li>
-          <li><div class="qRow"><div class="qText">جملة فيها (هم).</div><button class="btnAnswer" data-answer="s4a2">عرض الإجابة</button></div><div class="answer" id="s4a2"><strong>الإجابة:</strong> “قابلتهم بعد المدرسة”.</div></li>
-        </ol>
+    <section class="slide" data-title="ناهِيك">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">اختصار الحفظ: ناهِيك</h2>
+          <p class="sub">الاختصار يساعدك تتذكر، لكن الدرجة تأتي من التطبيق والتمارين.</p>
+          <div class="metaRow">
+            <div class="chip">🧠 تذكّر: <b>لا حفظ بدون تدريب</b></div>
+            <div class="chip">🔥 هدف الشريحة: <b>اكتب دون فصل</b></div>
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>لماذا ناهِيك؟</h3>
+            <p>لأنه يختصر مجموعة ضمائر النصب المتصلة التي تأتي في آخر الفعل غالبًا.</p>
+            <ul class="bullets">
+              <li>يساعدك تتذكر بسرعة.</li>
+              <li>لكن لازم تدريب: استخراج + تحويل.</li>
+              <li>أكبر خطأ: فصل الضمير عن الفعل.</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>اكتب دائمًا: شكرني، رأيتك، ساعدنا، أكرمه. لا تكتب: شكر ني أو رأيت ك.</div></div>
+          </div>
 
-  <section class="slide" data-title="كاف الخطاب">
-    <div class="slideHeader"><div><h2 class="big">كاف الخطاب</h2><p class="sub">مثل: أشكرك / رأيتك.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>أمثلة</h3>
-      <ul class="bullets"><li>أشكرك (ك)</li><li>رأيتك (ك)</li><li>نصحك (ك)</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">استخرج من “ساعدك”.</div><button class="btnAnswer" data-answer="s5a1">عرض الإجابة</button></div><div class="answer" id="s5a1"><strong>الإجابة:</strong> (ك).</div></li>
-          <li><div class="qRow"><div class="qText">جملة فيها (ك).</div><button class="btnAnswer" data-answer="s5a2">عرض الإجابة</button></div><div class="answer" id="s5a2"><strong>الإجابة:</strong> “أقدّرك”.</div></li>
-        </ol>
+          <div class="card">
+            <h3>أسئلة</h3>
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>أسئلة</strong>
+                  <div class="mini">تصحيح الكتابة مهم</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">هل يكفي الاختصار لوحده؟</div>
+                    <button class="btnAnswer" data-answer="s3a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s3a1"><strong>الإجابة:</strong> لا، لازم تدريب واستخراج وتحويل.</div>
+                </li>
+                <li>
+                  <div class="qRow">
+                    <div class="qText">صحّح: “شكر ني”.</div>
+                    <button class="btnAnswer" data-answer="s3a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s3a2"><strong>الإجابة:</strong> “شكرني”.</div>
+                </li>
+              </ol>
+            </div>
+
+            <div class="practice" data-practice="p3">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>إكمال</strong>
+                  <div class="mini">اكتب الشكل الصحيح</div>
+                </div>
+                <button class="btnSmall" data-check="p3" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">صحّح: <b>رأيت ك</b></div>
+                      <input data-ans="رأيتك" placeholder="اكتب الصحيح" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">صحّح: <b>ساعد نا أبي</b></div>
+                      <input data-ans="ساعدنا أبي" placeholder="اكتب الصحيح" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+    </section>
 
-  <section class="slide" data-title="ياء المتكلم">
-    <div class="slideHeader"><div><h2 class="big">ياء المتكلم (ني)</h2><p class="sub">مثل: ذكرني / علّمني.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>أمثلة</h3>
-      <ul class="bullets"><li>ذكرني (ني)</li><li>علّمني (ني)</li><li>سألني (ني)</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">استخرج من “أكرمني”.</div><button class="btnAnswer" data-answer="s6a1">عرض الإجابة</button></div><div class="answer" id="s6a1"><strong>الإجابة:</strong> (ني).</div></li>
-          <li><div class="qRow"><div class="qText">جملة فيها (ني).</div><button class="btnAnswer" data-answer="s6a2">عرض الإجابة</button></div><div class="answer" id="s6a2"><strong>الإجابة:</strong> “ساعدني صديقي”.</div></li>
-        </ol>
+    <section class="slide" data-title="هاء الغائب">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">هاء الغائب</h2>
+          <p class="sub">مثل: أشكره، أكرمه، ساعدها، قابلهم. كلها ضمائر نصب متصلة في محل مفعول به.</p>
+          <div class="metaRow">
+            <div class="chip">👤 غائب: <b>هو/هي/هم</b></div>
+            <div class="chip">📌 علامات: <b>ه، ها، هم</b></div>
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>أمثلة</h3>
+            <ul class="bullets">
+              <li>أشكره (ه) = أشكرُ من؟ هو</li>
+              <li>ساعدها (ها) = ساعدُ من؟ هي</li>
+              <li>قابلهم (هم) = قابلُ من؟ هم</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>لا تخلط بين (ه) كضمير وبين الهاء الأصلية في الكلمة. اسأل: هل يمكنني استبداله بـ (هو/هي/هم)؟</div></div>
+          </div>
 
-  <section class="slide" data-title="نا (نحن)">
-    <div class="slideHeader"><div><h2 class="big">نا (نحن)</h2><p class="sub">مثل: ساعدنا / كرّمنا.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>أمثلة</h3>
-      <ul class="bullets"><li>ساعدنا (نا)</li><li>كرّمنا (نا)</li><li>قابلنا (نا)</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>أسئلة</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">استخرج من “علّمنا”.</div><button class="btnAnswer" data-answer="s7a1">عرض الإجابة</button></div><div class="answer" id="s7a1"><strong>الإجابة:</strong> (نا).</div></li>
-          <li><div class="qRow"><div class="qText">كيف نميّزها؟</div><button class="btnAnswer" data-answer="s7a2">عرض الإجابة</button></div><div class="answer" id="s7a2"><strong>الإجابة:</strong> من السياق: من الفاعل وعلى من وقع الفعل.</div></li>
-        </ol>
+          <div class="card">
+            <h3>أسئلة + تدريب</h3>
+
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>أسئلة</strong>
+                  <div class="mini">استخرج الضمير</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">استخرج من “أكرمه”.</div>
+                    <button class="btnAnswer" data-answer="s4a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s4a1"><strong>الإجابة:</strong> (ه).</div>
+                </li>
+                <li>
+                  <div class="qRow">
+                    <div class="qText">اكتب جملة فيها (هم).</div>
+                    <button class="btnAnswer" data-answer="s4a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s4a2"><strong>الإجابة:</strong> “قابلتهم بعد المدرسة”.</div>
+                </li>
+              </ol>
+            </div>
+
+            <div class="practice" data-practice="p4">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>اختيار: أي ضمير؟</strong>
+                  <div class="mini">اختَر ثم تحقّق</div>
+                </div>
+                <button class="btnSmall" data-check="p4" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="prompt">في كلمة <b>ساعدها</b> الضمير هو:</div>
+                    <div class="mcq" data-mcq data-ans="ها">
+                      <div class="choice" data-choice="ه">ه</div>
+                      <div class="choice" data-choice="ها">ها</div>
+                      <div class="choice" data-choice="هم">هم</div>
+                      <div class="choice" data-choice="ك">ك</div>
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="prompt">في كلمة <b>قابلهم</b> الضمير هو:</div>
+                    <div class="mcq" data-mcq data-ans="هم">
+                      <div class="choice" data-choice="هم">هم</div>
+                      <div class="choice" data-choice="ها">ها</div>
+                      <div class="choice" data-choice="ني">ني</div>
+                      <div class="choice" data-choice="نا">نا</div>
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+    </section>
 
-  <section class="slide" data-title="مقارنة">
-    <div class="slideHeader"><div><h2 class="big">مقارنة سريعة</h2><p class="sub">غائب/مخاطب/متكلم/نحن مع مثال.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>أمثلة جاهزة</h3>
-      <ul class="bullets"><li>أشكره (ه)</li><li>أشكرك (ك)</li><li>ذكرني (ني)</li><li>ساعدنا (نا)</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>تحويل</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">حوّل “سألني” إلى مخاطب.</div><button class="btnAnswer" data-answer="s8a1">عرض الإجابة</button></div><div class="answer" id="s8a1"><strong>الإجابة:</strong> “سألك”.</div></li>
-          <li><div class="qRow"><div class="qText">حوّل “أشكرك” إلى غائب.</div><button class="btnAnswer" data-answer="s8a2">عرض الإجابة</button></div><div class="answer" id="s8a2"><strong>الإجابة:</strong> “أشكره”.</div></li>
-        </ol>
+    <section class="slide" data-title="كاف الخطاب">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">كاف الخطاب</h2>
+          <p class="sub">مثل: أشكرك، رأيتك، نصحك. الضمير يدل على المخاطَب (أنت).</p>
+          <div class="metaRow">
+            <div class="chip">🗣️ مخاطب: <b>أنت</b></div>
+            <div class="chip">📌 علامة: <b>ك</b></div>
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>أمثلة</h3>
+            <ul class="bullets">
+              <li>أشكرك (ك) = أشكرُ من؟ أنت</li>
+              <li>رأيتك (ك) = رأيتُ من؟ أنت</li>
+              <li>نصحك (ك) = نصحَ من؟ أنت</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>لو قلتَ: “أشكرك” فالمقصود “أنت” مفعول به، والفاعل ضمير مستتر تقديره “أنا”.</div></div>
+          </div>
 
-  <section class="slide" data-title="خطوات الاستخراج">
-    <div class="slideHeader"><div><h2 class="big">خطوات الاستخراج</h2><p class="sub">٣ خطوات: فعل → آخر الكلمة → على من يدل.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>الخطوات</h3>
-      <ul class="bullets"><li>حدّد الفعل.</li><li>لاحظ الجزء المتصل آخره.</li><li>اسأل: على من وقع الفعل؟</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>تطبيق</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">استخرج من “أحبك”.</div><button class="btnAnswer" data-answer="s9a1">عرض الإجابة</button></div><div class="answer" id="s9a1"><strong>الإجابة:</strong> (ك).</div></li>
-          <li><div class="qRow"><div class="qText">استخرج من “قابلهم”.</div><button class="btnAnswer" data-answer="s9a2">عرض الإجابة</button></div><div class="answer" id="s9a2"><strong>الإجابة:</strong> (هم).</div></li>
-        </ol>
+          <div class="card">
+            <h3>تدريب سريع</h3>
+            <div class="practice" data-practice="p5">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>استخراج + تحويل</strong>
+                  <div class="mini">النقاط تزيد بالتأكد</div>
+                </div>
+                <button class="btnSmall" data-check="p5" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">استخرج الضمير من: <b>ساعدك</b></div>
+                      <input data-ans="ك" placeholder="اكتب الضمير" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">حوّل: <b>أشكره</b> إلى مخاطب</div>
+                      <input data-ans="أشكرك" placeholder="اكتب الجملة" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>سؤال</strong>
+                  <div class="mini">جملة فيها ك</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">اكتب جملة فيها (ك) كضمير نصب متصل.</div>
+                    <button class="btnAnswer" data-answer="s5a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s5a2"><strong>الإجابة:</strong> “أقدّرك كثيرًا”.</div>
+                </li>
+              </ol>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+    </section>
 
-  <section class="slide" data-title="أخطاء">
-    <div class="slideHeader"><div><h2 class="big">أخطاء شائعة</h2><p class="sub">أهم خطأ: فصل الضمير عن الفعل.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>تصحيح</h3>
-      <ul class="bullets"><li>❌ رأيت ك → ✅ رأيتك</li><li>❌ شكر ني → ✅ شكرني</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>سؤال</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">صحّح: “ساعد نا أبي”.</div><button class="btnAnswer" data-answer="s10a1">عرض الإجابة</button></div><div class="answer" id="s10a1"><strong>الإجابة:</strong> “ساعدنا أبي”.</div></li>
-          <li><div class="qRow"><div class="qText">لماذا خطأ؟</div><button class="btnAnswer" data-answer="s10a2">عرض الإجابة</button></div><div class="answer" id="s10a2"><strong>الإجابة:</strong> لأنه ضمير متصل.</div></li>
-        </ol>
+    <section class="slide" data-title="ياء المتكلم">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">ياء المتكلم (ني)</h2>
+          <p class="sub">مثل: علّمني، سألني، ذكرني. الضمير يدل على المتكلم (أنا) كمفعول به.</p>
+          <div class="metaRow">
+            <div class="chip">🙋 متكلم: <b>أنا</b></div>
+            <div class="chip">📌 علامة: <b>ني</b></div>
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>أمثلة</h3>
+            <ul class="bullets">
+              <li>علّمني (ني) = علّمَ من؟ أنا</li>
+              <li>سألني (ني) = سألَ من؟ أنا</li>
+              <li>ذكرني (ني) = ذكرَ من؟ أنا</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>لا تكتبها منفصلة. الصحيح: “علّمني” وليس “علّم ني”.</div></div>
+          </div>
 
-  <section class="slide" data-title="أمثلة محلولة 1">
-    <div class="slideHeader"><div><h2 class="big">أمثلة محلولة (1)</h2><p class="sub">نحدّد الضمير ونوعه.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>حلول</h3>
-      <ul class="bullets"><li>شكرني → (ني) متكلم</li><li>أشكرك → (ك) مخاطب</li><li>أكرمه → (ه) غائب</li><li>كرّمنا → (نا) نحن</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>سؤال</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">في “أكرمه” من المقصود؟</div><button class="btnAnswer" data-answer="s11a1">عرض الإجابة</button></div><div class="answer" id="s11a1"><strong>الإجابة:</strong> هو (غائب).</div></li>
-          <li><div class="qRow"><div class="qText">في “أشكرك” من المقصود؟</div><button class="btnAnswer" data-answer="s11a2">عرض الإجابة</button></div><div class="answer" id="s11a2"><strong>الإجابة:</strong> أنت (مخاطب).</div></li>
-        </ol>
+          <div class="card">
+            <h3>تدريب نقاط</h3>
+            <div class="practice" data-practice="p6">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>إكمال</strong>
+                  <div class="mini">اكتب الإجابة بدقة</div>
+                </div>
+                <button class="btnSmall" data-check="p6" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">استخرج الضمير من: <b>أكرمني</b></div>
+                      <input data-ans="ني" placeholder="اكتب الضمير" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">حوّل: <b>سألك</b> إلى متكلم</div>
+                      <input data-ans="سألني" placeholder="اكتب الجملة" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>سؤال</strong>
+                  <div class="mini">جملة فيها ني</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">اكتب جملة فيها (ني).</div>
+                    <button class="btnAnswer" data-answer="s6a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s6a2"><strong>الإجابة:</strong> “ساعدني صديقي”.</div>
+                </li>
+              </ol>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+    </section>
 
-  <section class="slide" data-title="أمثلة محلولة 2">
-    <div class="slideHeader"><div><h2 class="big">أمثلة محلولة (2)</h2><p class="sub">تثبيت بالتمارين.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>حلول</h3>
-      <ul class="bullets"><li>نصحك → (ك)</li><li>سألني → (ني)</li><li>قابلهم → (هم)</li><li>ساعدنا → (نا)</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>سؤال</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">حوّل “سألني” إلى غائب.</div><button class="btnAnswer" data-answer="s12a1">عرض الإجابة</button></div><div class="answer" id="s12a1"><strong>الإجابة:</strong> “سأله”.</div></li>
-          <li><div class="qRow"><div class="qText">حوّل “ساعدنا” إلى مخاطب.</div><button class="btnAnswer" data-answer="s12a2">عرض الإجابة</button></div><div class="answer" id="s12a2"><strong>الإجابة:</strong> “ساعدك”.</div></li>
-        </ol>
+    <section class="slide" data-title="نا (نحن)">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">نا (نحن)</h2>
+          <p class="sub">مثل: ساعدنا، كرّمنا. الضمير يدل على (نحن) كمفعول به.</p>
+          <div class="metaRow">
+            <div class="chip">👥 جمع: <b>نحن</b></div>
+            <div class="chip">📌 علامة: <b>نا</b></div>
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>أمثلة</h3>
+            <ul class="bullets">
+              <li>ساعدنا (نا) = ساعدَ من؟ نحن</li>
+              <li>كرّمنا (نا) = كرّمَ من؟ نحن</li>
+              <li>قابلنا (نا) = قابلَ من؟ نحن</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>تمييزها يكون بالسياق: من الفاعل وعلى من وقع الفعل؟</div></div>
+          </div>
 
-  <section class="slide" data-title="تدريب 1">
-    <div class="slideHeader"><div><h2 class="big">تدريب (1): أكمل</h2><p class="sub">اختر من: ه/ك/ني/نا</p></div></div>
-    <div class="body"><div class="card">
-      <h3>أكمل</h3>
-      <ul class="bullets"><li>1) شكرَ (___) المعلمُ.</li><li>2) ساعدَ (___) أبي.</li><li>3) ذكرَ (___) صديقي.</li><li>4) أكرمَ (___) المدير.</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>الحل</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">الحل</div><button class="btnAnswer" data-answer="s13a1">عرض الإجابة</button></div>
-            <div class="answer" id="s13a1"><strong>الإجابة:</strong> 1) ك  2) نا  3) ني  4) ه</div></li>
-        </ol>
+          <div class="card">
+            <h3>تدريب + اختيار</h3>
+            <div class="practice" data-practice="p7">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>تحقّق</strong>
+                  <div class="mini">إجابات قصيرة</div>
+                </div>
+                <button class="btnSmall" data-check="p7" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">استخرج الضمير من: <b>علّمنا</b></div>
+                      <input data-ans="نا" placeholder="اكتب الضمير" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="prompt">في كلمة <b>كرّمنا</b> الضمير هو:</div>
+                    <div class="mcq" data-mcq data-ans="نا">
+                      <div class="choice" data-choice="ك">ك</div>
+                      <div class="choice" data-choice="ني">ني</div>
+                      <div class="choice" data-choice="نا">نا</div>
+                      <div class="choice" data-choice="ه">ه</div>
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>سؤال</strong>
+                  <div class="mini">تمييز بالسياق</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">كيف نميّز (نا)؟</div>
+                    <button class="btnAnswer" data-answer="s7a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s7a2"><strong>الإجابة:</strong> من السياق: من الفاعل وعلى من وقع الفعل.</div>
+                </li>
+              </ol>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+    </section>
 
-  <section class="slide" data-title="تدريب 2">
-    <div class="slideHeader"><div><h2 class="big">تدريب (2): تصحيح + استخراج</h2><p class="sub">تأكد من الاتصال بدون مسافة.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>أسئلة</h3>
-      <ul class="bullets"><li>1) صحّح: “رأيت ك”.</li><li>2) استخرج من “علّمني”.</li><li>3) استخرج من “ساعدها”.</li><li>4) استخرج من “نصحك”.</li></ul>
-      <div class="qa"><div class="qaTop"><div><strong>الإجابات</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">حل 1–4</div><button class="btnAnswer" data-answer="s14a1">عرض الإجابة</button></div>
-            <div class="answer" id="s14a1"><strong>الإجابة:</strong> 1) رأيتك  2) ني  3) ها  4) ك</div></li>
-        </ol>
+    <section class="slide" data-title="مقارنة">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">مقارنة سريعة</h2>
+          <p class="sub">غائب/مخاطب/متكلم/نحن مع مثال وتحويلات.</p>
+          <div class="metaRow">
+            <div class="chip">ه: <b>أشكره</b></div>
+            <div class="chip">ك: <b>أشكرك</b></div>
+            <div class="chip">ني: <b>ذكرني</b></div>
+            <div class="chip">نا: <b>ساعدنا</b></div>
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>تحويلات مفيدة</h3>
+            <p>التحويل يساعدك تفهم الضمير، لأنك تغيّر الشخص ويبقى المعنى واضحًا.</p>
+            <ul class="bullets">
+              <li>سألني → سألك → سأله → سألنا</li>
+              <li>أشكرك → أشكره → أشكرني (غير منطقية غالبًا) → أشكرنا (قد تأتي بحسب السياق)</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>الأهم: اسأل دائمًا “على من وقع الفعل؟”</div></div>
+          </div>
 
-  <section class="slide" data-title="الملخص">
-    <div class="slideHeader"><div><h2 class="big">ملخص نهائي</h2><p class="sub">راجع قبل التسليم.</p></div></div>
-    <div class="body"><div class="card">
-      <h3>الخلاصة</h3>
-      <ul class="bullets">
-        <li>هاء الغائب: أشكره</li>
-        <li>كاف الخطاب: أشكرك</li>
-        <li>ياء المتكلم: ذكرني</li>
-        <li>نا: ساعدنا</li>
-      </ul>
-      <div class="qa"><div class="qaTop"><div><strong>سؤال ختامي</strong></div><button class="btnSmall" data-showall>عرض كل الإجابات</button></div>
-        <ol class="qList">
-          <li><div class="qRow"><div class="qText">اكتب جملة فيها (ك) وجملة فيها (ه).</div><button class="btnAnswer" data-answer="s15a1">عرض الإجابة</button></div>
-            <div class="answer" id="s15a1"><strong>الإجابة:</strong> أشكرك على مساعدتك + أكرمه المعلم.</div></li>
-        </ol>
+          <div class="card">
+            <h3>تدريب نقاط</h3>
+            <div class="practice" data-practice="p8">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>تحويل</strong>
+                  <div class="mini">اكتب التحويل الصحيح</div>
+                </div>
+                <button class="btnSmall" data-check="p8" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">حوّل <b>سألني</b> إلى مخاطب</div>
+                      <input data-ans="سألك" placeholder="اكتب الجملة" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">حوّل <b>أشكرك</b> إلى غائب</div>
+                      <input data-ans="أشكره" placeholder="اكتب الجملة" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>أسئلة</strong>
+                  <div class="mini">تحويلات جاهزة</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">حوّل “سألني” إلى مخاطب.</div>
+                    <button class="btnAnswer" data-answer="s8a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s8a1"><strong>الإجابة:</strong> “سألك”.</div>
+                </li>
+                <li>
+                  <div class="qRow">
+                    <div class="qText">حوّل “أشكرك” إلى غائب.</div>
+                    <button class="btnAnswer" data-answer="s8a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s8a2"><strong>الإجابة:</strong> “أشكره”.</div>
+                </li>
+              </ol>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </div></div>
-  </section>
+    </section>
 
-</main>
+    <section class="slide" data-title="خطوات الاستخراج">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">خطوات الاستخراج</h2>
+          <p class="sub">٣ خطوات قوية: حدّد الفعل → لاحظ آخر الكلمة → اسأل على من وقع الفعل.</p>
+          <div class="metaRow">
+            <div class="chip">1️⃣ <b>الفعل</b></div>
+            <div class="chip">2️⃣ <b>آخره</b></div>
+            <div class="chip">3️⃣ <b>على من؟</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>الخطوات</h3>
+            <ul class="bullets">
+              <li>حدّد الفعل في الجملة.</li>
+              <li>لاحظ الجزء المتصل بآخر الفعل.</li>
+              <li>اسأل: على من وقع الفعل؟</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>لو عرفت المفعول به ستعرف الضمير فورًا.</div></div>
+          </div>
 
-<!-- BIG WHITEBOARD BELOW ALL SLIDES -->
-<section class="boardPanel">
-  <div class="boardTitle">
-    <h3>السبورة الكبيرة (تكتب وترسم)</h3>
-    <div class="hint">تحفظ رسمك لكل شريحة ✅</div>
-  </div>
+          <div class="card">
+            <h3>تطبيق نقاط</h3>
+            <div class="practice" data-practice="p9">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>استخراج</strong>
+                  <div class="mini">أجب بسرعة</div>
+                </div>
+                <button class="btnSmall" data-check="p9" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">استخرج من <b>أحبك</b></div>
+                      <input data-ans="ك" placeholder="الضمير" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">استخرج من <b>قابلهم</b></div>
+                      <input data-ans="هم" placeholder="الضمير" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-  <div class="tools">
-    <button class="toolBtn active" data-tool="pen">✍️ قلم</button>
-    <button class="toolBtn" data-tool="eraser">🧽 ممحاة</button>
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>إجابات</strong>
+                  <div class="mini">تحقق من نفسك</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">استخرج من “أحبك”.</div>
+                    <button class="btnAnswer" data-answer="s9a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s9a1"><strong>الإجابة:</strong> (ك).</div>
+                </li>
+                <li>
+                  <div class="qRow">
+                    <div class="qText">استخرج من “قابلهم”.</div>
+                    <button class="btnAnswer" data-answer="s9a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s9a2"><strong>الإجابة:</strong> (هم).</div>
+                </li>
+              </ol>
+            </div>
 
-    <label>🎨 لون <input type="color" id="color" value="#2563eb"></label>
-    <label>📏 حجم <input type="range" id="size" min="2" max="28" value="6"></label>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <button class="toolBtn" id="clear">مسح السبورة</button>
-    <button class="toolBtn" id="save">تحميل الرسم</button>
-  </div>
+    <section class="slide" data-title="أخطاء">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">أخطاء شائعة</h2>
+          <p class="sub">أهم خطأ: فصل الضمير عن الفعل. هذا يفقدك الدرجة مباشرة.</p>
+          <div class="metaRow">
+            <div class="chip">❌ فصل</div>
+            <div class="chip">✅ اتصال</div>
+            <div class="chip">🏁 تطبيق</div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>تصحيح</h3>
+            <ul class="bullets">
+              <li>❌ رأيت ك → ✅ رأيتك</li>
+              <li>❌ شكر ني → ✅ شكرني</li>
+              <li>❌ ساعد نا → ✅ ساعدنا</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>الضمير هنا متصل، أي لا ينفصل عن الفعل أبدًا.</div></div>
+          </div>
 
-  <div class="boardWrap">
-    <canvas id="board"></canvas>
-    <div class="boardWatermark">Slide board memory ✅</div>
-  </div>
-</section>
+          <div class="card">
+            <h3>تدريب نقاط</h3>
+            <div class="practice" data-practice="p10">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>تصحيح</strong>
+                  <div class="mini">اكتب الصحيح</div>
+                </div>
+                <button class="btnSmall" data-check="p10" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">صحّح: <b>ساعد نا أبي</b></div>
+                      <input data-ans="ساعدنا أبي" placeholder="اكتب الصحيح" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">صحّح: <b>رأيت ك اليوم</b></div>
+                      <input data-ans="رأيتك اليوم" placeholder="اكتب الصحيح" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-<footer>
-  <div>اختصارات: <span class="kbd">←</span> السابق · <span class="kbd">→</span> التالي · <span class="kbd">Home</span> أول شريحة · <span class="kbd">End</span> آخر شريحة</div>
-  <div>السبورة تحفظ الرسم لكل شريحة حتى لو تنقلت.</div>
-</footer>
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>سؤال</strong>
+                  <div class="mini">لماذا خطأ؟</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">لماذا “ساعد نا” خطأ؟</div>
+                    <button class="btnAnswer" data-answer="s10a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s10a2"><strong>الإجابة:</strong> لأنه ضمير متصل لا يفصل عن الفعل.</div>
+                </li>
+              </ol>
+            </div>
 
-<script>
-  // Slides
-  const slides = Array.from(document.querySelectorAll(".slide"));
-  const counter = document.getElementById("counter");
-  const prevBtn = document.getElementById("prev");
-  const nextBtn = document.getElementById("next");
-  const bar = document.getElementById("bar");
-  let idx = 0;
+          </div>
+        </div>
+      </div>
+    </section>
 
-  function progress(){
-    bar.style.width = (((idx+1) / slides.length) * 100) + "%";
-    counter.textContent = `${idx+1} / ${slides.length}`;
-    prevBtn.disabled = idx === 0;
-    nextBtn.disabled = idx === slides.length - 1;
-    document.title = `${slides[idx].dataset.title} — ضمائر النصب المتصلة (ناهِيك)`;
-  }
+    <section class="slide" data-title="أمثلة محلولة 1">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">أمثلة محلولة (1)</h2>
+          <p class="sub">نحدّد الضمير ونوعه بسرعة: غائب/مخاطب/متكلم/نحن.</p>
+          <div class="metaRow">
+            <div class="chip">🧩 مهارة: <b>تسمية الضمير</b></div>
+            <div class="chip">⭐ هدف: <b>سرعة</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>حلول</h3>
+            <ul class="bullets">
+              <li>شكرني → (ني) متكلم</li>
+              <li>أشكرك → (ك) مخاطب</li>
+              <li>أكرمه → (ه) غائب</li>
+              <li>كرّمنا → (نا) نحن</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>لو عرفت الشخص (هو/أنت/أنا/نحن) ستعرف الضمير مباشرة.</div></div>
+          </div>
 
-  function collapseAnswers(slide){
-    slide.querySelectorAll(".answer").forEach(a => a.style.display = "none");
-    slide.querySelectorAll(".btnAnswer").forEach(b => b.textContent = "عرض الإجابة");
-    slide.querySelectorAll("[data-showall]").forEach(x => x.textContent = "عرض كل الإجابات");
-  }
+          <div class="card">
+            <h3>تدريب نقاط</h3>
+            <div class="practice" data-practice="p11">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>اكتب نوع الشخص</strong>
+                  <div class="mini">اكتب: غائب/مخاطب/متكلم/نحن</div>
+                </div>
+                <button class="btnSmall" data-check="p11" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">في <b>أشكرك</b> الشخص هو:</div>
+                      <input data-ans="مخاطب" placeholder="مثال: مخاطب" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">في <b>أكرمه</b> الشخص هو:</div>
+                      <input data-ans="غائب" placeholder="مثال: غائب" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-  // Whiteboard
-  const canvas = document.getElementById("board");
-  const ctx = canvas.getContext("2d");
-  const colorEl = document.getElementById("color");
-  const sizeEl = document.getElementById("size");
-  const clearBtn = document.getElementById("clear");
-  const saveBtn = document.getElementById("save");
-  const toolBtns = Array.from(document.querySelectorAll(".toolBtn[data-tool]"));
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>سؤال</strong>
+                  <div class="mini">تفسير</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">في “أكرمه” من المقصود؟</div>
+                    <button class="btnAnswer" data-answer="s11a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s11a1"><strong>الإجابة:</strong> هو (غائب).</div>
+                </li>
+                <li>
+                  <div class="qRow">
+                    <div class="qText">في “أشكرك” من المقصود؟</div>
+                    <button class="btnAnswer" data-answer="s11a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s11a2"><strong>الإجابة:</strong> أنت (مخاطب).</div>
+                </li>
+              </ol>
+            </div>
 
-  let tool = "pen";
-  let drawing = false;
-  let last = null;
+          </div>
+        </div>
+      </div>
+    </section>
 
-  // save per slide
-  const boardStore = new Map(); // slide index -> dataURL
+    <section class="slide" data-title="أمثلة محلولة 2">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">أمثلة محلولة (2)</h2>
+          <p class="sub">تثبيت بالتمارين: استخرج الضمير بسرعة ثم سمِّه.</p>
+          <div class="metaRow">
+            <div class="chip">⚡ سرعة</div>
+            <div class="chip">🎯 دقّة</div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>حلول</h3>
+            <ul class="bullets">
+              <li>نصحك → (ك)</li>
+              <li>سألني → (ني)</li>
+              <li>قابلهم → (هم)</li>
+              <li>ساعدنا → (نا)</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>استخدم سؤال: “نصح من؟” “سأل من؟” “قابل من؟” “ساعد من؟”</div></div>
+          </div>
 
-  function resizeCanvas(){
-    const data = canvas.toDataURL();
-    const wrap = canvas.parentElement.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
+          <div class="card">
+            <h3>تحويل نقاط</h3>
+            <div class="practice" data-practice="p12">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>تحويل</strong>
+                  <div class="mini">غيّر الشخص</div>
+                </div>
+                <button class="btnSmall" data-check="p12" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">حوّل <b>سألني</b> إلى غائب</div>
+                      <input data-ans="سأله" placeholder="اكتب الجملة" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">حوّل <b>ساعدنا</b> إلى مخاطب</div>
+                      <input data-ans="ساعدك" placeholder="اكتب الجملة" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-    canvas.width = Math.floor(wrap.width * dpr);
-    canvas.height = Math.floor(wrap.height * dpr);
-    canvas.style.width = wrap.width + "px";
-    canvas.style.height = wrap.height + "px";
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>إجابات</strong>
+                  <div class="mini">تحقق</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">حوّل “سألني” إلى غائب.</div>
+                    <button class="btnAnswer" data-answer="s12a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s12a1"><strong>الإجابة:</strong> “سأله”.</div>
+                </li>
+                <li>
+                  <div class="qRow">
+                    <div class="qText">حوّل “ساعدنا” إلى مخاطب.</div>
+                    <button class="btnAnswer" data-answer="s12a2" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s12a2"><strong>الإجابة:</strong> “ساعدك”.</div>
+                </li>
+              </ol>
+            </div>
 
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
+          </div>
+        </div>
+      </div>
+    </section>
 
-    // restore image
-    if (data && data !== "data:,"){
-      const img = new Image();
-      img.onload = () => {
-        ctx.clearRect(0,0,wrap.width,wrap.height);
-        ctx.drawImage(img, 0, 0, wrap.width, wrap.height);
+    <section class="slide" data-title="تدريب 1">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">تدريب (1): أكمل</h2>
+          <p class="sub">اختر من: ه/ك/ني/نا ثم ضعها في مكانها الصحيح داخل الفعل.</p>
+          <div class="metaRow">
+            <div class="chip">🎯 هدف: <b>اختيار الضمير</b></div>
+            <div class="chip">⭐ نقاط: <b>+4</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>أكمل</h3>
+            <ul class="bullets">
+              <li>1) شكرَ (___) المعلمُ.</li>
+              <li>2) ساعدَ (___) أبي.</li>
+              <li>3) ذكرَ (___) صديقي.</li>
+              <li>4) أكرمَ (___) المدير.</li>
+            </ul>
+            <div class="callout"><div class="dot"></div><div>الضمير يكون متصلًا بالفعل: شكرَك، ساعدَنا، ذكرَني، أكرمَه.</div></div>
+          </div>
+
+          <div class="card">
+            <h3>حل بنقاط</h3>
+            <div class="practice" data-practice="p13">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>أدخل الضمير</strong>
+                  <div class="mini">اكتب فقط: ك / نا / ني / ه</div>
+                </div>
+                <button class="btnSmall" data-check="p13" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">1) شكرَ (___) المعلمُ</div>
+                      <input data-ans="ك" placeholder="مثال: ك" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">2) ساعدَ (___) أبي</div>
+                      <input data-ans="نا" placeholder="مثال: نا" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">3) ذكرَ (___) صديقي</div>
+                      <input data-ans="ني" placeholder="مثال: ني" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">4) أكرمَ (___) المدير</div>
+                      <input data-ans="ه" placeholder="مثال: ه" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>الحل</strong>
+                  <div class="mini">افتح الإجابة</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">الحل</div>
+                    <button class="btnAnswer" data-answer="s13a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s13a1"><strong>الإجابة:</strong> 1) ك  2) نا  3) ني  4) ه</div>
+                </li>
+              </ol>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="تدريب 2">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">تدريب (2): تصحيح + استخراج</h2>
+          <p class="sub">تأكد من الاتصال بدون مسافة. ثم استخرج الضمير.</p>
+          <div class="metaRow">
+            <div class="chip">✅ تصحيح</div>
+            <div class="chip">🔎 استخراج</div>
+            <div class="chip">⭐ نقاط: <b>+4</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="grid2">
+          <div class="card">
+            <h3>أسئلة</h3>
+            <ul class="bullets">
+              <li>1) صحّح: “رأيت ك”.</li>
+              <li>2) استخرج من “علّمني”.</li>
+              <li>3) استخرج من “ساعدها”.</li>
+              <li>4) استخرج من “نصحك”.</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>حل بنقاط</h3>
+            <div class="practice" data-practice="p14">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>أجب</strong>
+                  <div class="mini">اكتب الإجابات الأربع</div>
+                </div>
+                <button class="btnSmall" data-check="p14" type="button">✅ تحقّق</button>
+              </div>
+              <div class="practiceBody">
+                <div class="items">
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">1) تصحيح “رأيت ك”</div>
+                      <input data-ans="رأ                       <input data-ans="رأيتك" placeholder="اكتب الصحيح" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">2) استخرج الضمير من <b>علّمني</b></div>
+                      <input data-ans="ني" placeholder="اكتب الضمير فقط" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">3) استخرج الضمير من <b>ساعدها</b></div>
+                      <input data-ans="ها" placeholder="اكتب الضمير فقط" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">4) استخرج الضمير من <b>نصحك</b></div>
+                      <input data-ans="ك" placeholder="اكتب الضمير فقط" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="qa">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>الحل</strong>
+                  <div class="mini">افتح الإجابة أو اعرض الكل</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">الإجابات الأربع</div>
+                    <button class="btnAnswer" data-answer="s14a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s14a1"><strong>الإجابة:</strong> 1) رأيتك  2) ني  3) ها  4) ك</div>
+                </li>
+              </ol>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="الخلاصة + تحدّي نهائي">
+      <div class="slideHeader">
+        <div>
+          <h2 class="big">الخلاصة + تحدّي نهائي</h2>
+          <p class="sub">إذا فهمت سؤال “على من وقع الفعل؟” ستتفوق. جرّب التحدّي، ثم افتح وضع الاختبار 🧠.</p>
+          <div class="metaRow">
+            <div class="chip">🧠 ناهِيك: <b>نا • ه • ي(ني) • ك</b></div>
+            <div class="chip">⭐ نقاط: <b>+8</b></div>
+            <div class="chip">🎯 هدف: <b>سرعة + دقة</b></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="body">
+        <div class="grid2">
+
+          <div class="card">
+            <h3>ملخّص سريع</h3>
+            <p>الضمير المتصل هنا دائمًا <b>مفعول به</b>. أي أنه يجيب عن سؤال: <b>على من وقع الفعل؟</b></p>
+
+            <div class="card" style="padding:12px;border-radius:18px;">
+              <div style="display:grid;grid-template-columns: 1fr 1fr;gap:10px;">
+                <div class="callout" style="margin:0;">
+                  <div class="dot"></div>
+                  <div><b>ه / ها / هم</b><br>غائب: أشكره، ساعدها، قابلهم</div>
+                </div>
+                <div class="callout" style="margin:0;border-color:color-mix(in srgb, var(--accent2) 25%, transparent);background:color-mix(in srgb, var(--accent2) 10%, transparent);">
+                  <div class="dot" style="background:var(--accent2)"></div>
+                  <div><b>ك</b><br>مخاطب: أشكرك، رأيتك، نصحك</div>
+                </div>
+                <div class="callout" style="margin:0;border-color:color-mix(in srgb, var(--accent3) 25%, transparent);background:color-mix(in srgb, var(--accent3) 10%, transparent);">
+                  <div class="dot" style="background:var(--accent3)"></div>
+                  <div><b>ني</b><br>متكلم: علّمني، سألني، ذكرني</div>
+                </div>
+                <div class="callout" style="margin:0;">
+                  <div class="dot"></div>
+                  <div><b>نا</b><br>نحن: ساعدنا، كرّمنا، قابلنا</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="callout" style="margin-top:12px;">
+              <div class="dot"></div>
+              <div>قاعدة ذهبية: إذا رأيتَ مسافة بين الفعل والضمير في الكتابة فهذه <b>غالبًا</b> إجابة خاطئة.</div>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+              <button class="btn good" type="button" id="openQuizFromLast">🧠 افتح الاختبار السريع</button>
+              <button class="btn" type="button" id="openBoardFromLast">✍️ افتح السبورة لهذه الشريحة</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>تحدّي نهائي (نقاط)</h3>
+
+            <div class="practice" data-practice="p15">
+              <div class="practiceTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>حل بسرعة</strong>
+                  <div class="mini">كل إجابة صحيحة = +1</div>
+                </div>
+                <button class="btnSmall" data-check="p15" type="button">✅ تحقّق</button>
+              </div>
+
+              <div class="practiceBody">
+                <div class="items">
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">1) استخرج الضمير من: <b>أحببتهم</b></div>
+                      <input data-ans="هم" placeholder="الضمير" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">2) استخرج الضمير من: <b>أكرمته</b></div>
+                      <input data-ans="ه" placeholder="الضمير" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">3) صحّح: <b>شكر ني</b></div>
+                      <input data-ans="شكرني" placeholder="اكتب الصحيح" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">4) حوّل: <b>سألني</b> إلى نحن</div>
+                      <input data-ans="سألنا" placeholder="اكتب الجملة" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="prompt">5) في كلمة <b>رأيتك</b> الضمير هو:</div>
+                    <div class="mcq" data-mcq data-ans="ك">
+                      <div class="choice" data-choice="ه">ه</div>
+                      <div class="choice" data-choice="ك">ك</div>
+                      <div class="choice" data-choice="ني">ني</div>
+                      <div class="choice" data-choice="نا">نا</div>
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="prompt">6) في كلمة <b>قابلهم</b> الضمير هو:</div>
+                    <div class="mcq" data-mcq data-ans="هم">
+                      <div class="choice" data-choice="هم">هم</div>
+                      <div class="choice" data-choice="ها">ها</div>
+                      <div class="choice" data-choice="ك">ك</div>
+                      <div class="choice" data-choice="ني">ني</div>
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">7) حوّل: <b>أشكره</b> إلى مخاطب</div>
+                      <input data-ans="أشكرك" placeholder="اكتب الجملة" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                  <div class="item">
+                    <div class="row">
+                      <div class="prompt">8) استخرج الضمير من: <b>كرّمنا</b></div>
+                      <input data-ans="نا" placeholder="الضمير" />
+                    </div>
+                    <div class="feedback"></div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="qa" style="margin-top:14px;">
+              <div class="qaTop">
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                  <strong>ملاحظة</strong>
+                  <div class="mini">لما تغلط، ركّز على سؤال “على من؟”</div>
+                </div>
+                <button class="btnSmall" data-showall type="button">👁️ عرض كل الإجابات</button>
+              </div>
+              <ol class="qList">
+                <li>
+                  <div class="qRow">
+                    <div class="qText">أهم قاعدة في الدرس؟</div>
+                    <button class="btnAnswer" data-answer="s15a1" type="button">🟦 عرض الإجابة</button>
+                  </div>
+                  <div class="answer" id="s15a1"><strong>الإجابة:</strong> اسأل دائمًا: “على من وقع الفعل؟” وستعرف الضمير المتصل.</div>
+                </li>
+              </ol>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div>© درس تفاعلي — ضمائر النصب المتصلة (ناهِيك) — الصف الثامن</div>
+    <div>اختصارات: <span class="kbd">←</span> <span class="kbd">→</span> <span class="kbd">Home</span> <span class="kbd">End</span> <span class="kbd">Esc</span></div>
+  </footer>
+
+  <script>
+    (function(){
+      const $ = (s, el=document) => el.querySelector(s);
+      const $$ = (s, el=document) => Array.from(el.querySelectorAll(s));
+
+      const deck = $("#deck");
+      const slides = $$(".slide", deck);
+      const total = slides.length;
+
+      const counter = $("#counter");
+      const bar = $("#bar");
+      const scorePill = $("#scorePill");
+
+      const prevBtn = $("#prev");
+      const nextBtn = $("#next");
+      const jumpInput = $("#jumpInput");
+
+      const openDrawer = $("#openDrawer");
+      const closeDrawer = $("#closeDrawer");
+      const drawer = $("#drawer");
+      const drawerBackdrop = $("#drawerBackdrop");
+      const drawerBody = $("#drawerBody");
+      const drawerSearch = $("#drawerSearch");
+
+      const themeBtn = $("#themeBtn");
+      const presentBtn = $("#presentBtn");
+      const fullBtn = $("#fullBtn");
+
+      const boardBtn = $("#boardBtn");
+      const quizBtn = $("#quizBtn");
+
+      const exportBtn = $("#exportBtn");
+      const importBtn = $("#importBtn");
+      const importFile = $("#importFile");
+      const resetBtn = $("#resetBtn");
+
+      const toastWrap = $("#toastWrap");
+
+      const modalBack = $("#modalBack");
+      const quizModal = $("#quizModal");
+      const quizClose = $("#quizClose");
+      const quizStart = $("#quizStart");
+      const quizReset = $("#quizReset");
+
+      const quizCount = $("#quizCount");
+      const quizMinutes = $("#quizMinutes");
+      const quizType = $("#quizType");
+
+      const quizStage = $("#quizStage");
+      const quizProg = $("#quizProg");
+      const quizTimer = $("#quizTimer");
+      const quizScore = $("#quizScore");
+      const quizQ = $("#quizQ");
+      const quizSub = $("#quizSub");
+      const quizAnsRow = $("#quizAnsRow");
+      const quizInput = $("#quizInput");
+      const quizSubmit = $("#quizSubmit");
+      const quizSkip = $("#quizSkip");
+      const quizChoices = $("#quizChoices");
+      const quizResult = $("#quizResult");
+
+      const quizSummary = $("#quizSummary");
+      const quizFinalScore = $("#quizFinalScore");
+      const quizRight = $("#quizRight");
+      const quizWrong = $("#quizWrong");
+      const quizDone = $("#quizDone");
+      const quizSaveToScore = $("#quizSaveToScore");
+      const quizBack = $("#quizBack");
+
+      const boardOverlayBack = $("#boardOverlayBack");
+      const boardOverlay = $("#boardOverlay");
+      const boardOverlayClose = $("#boardOverlayClose");
+      const boardCanvas = $("#board2");
+      const wm2 = $("#wm2");
+
+      const color2 = $("#color2");
+      const size2 = $("#size2");
+      const alpha2 = $("#alpha2");
+
+      const undo2 = $("#undo2");
+      const redo2 = $("#redo2");
+      const clear2 = $("#clear2");
+      const save2 = $("#save2");
+
+      const openQuizFromLast = $("#openQuizFromLast");
+      const openBoardFromLast = $("#openBoardFromLast");
+
+      const LS_KEY = "nahik_deck_state_v1";
+      const LS_BOARD = "nahik_deck_board_v1";
+
+      const diacritics = /[\u064B-\u0652\u0670\u0640]/g;
+      const punct = /[ـ،؛:!؟"“”'’.,()\[\]{}]/g;
+
+      const norm = (s) => (s||"")
+        .toString()
+        .trim()
+        .replace(diacritics,"")
+        .replace(punct,"")
+        .replace(/\s+/g," ")
+        .trim();
+
+      const normTight = (s) => norm(s).replace(/\s+/g,"");
+
+      const toast = (title, msg, kind) => {
+        const t = document.createElement("div");
+        t.className = "toast";
+        const icon = document.createElement("div");
+        icon.className = "icon";
+        icon.textContent = kind === "good" ? "✓" : kind === "bad" ? "!" : "★";
+        icon.style.background = kind === "good" ? "var(--accent2)" : kind === "bad" ? "var(--danger)" : "var(--accent)";
+        const txt = document.createElement("div");
+        txt.className = "txt";
+        const strong = document.createElement("strong");
+        strong.textContent = title;
+        const div = document.createElement("div");
+        div.textContent = msg || "";
+        txt.appendChild(strong);
+        txt.appendChild(div);
+
+        const close = document.createElement("button");
+        close.className = "close";
+        close.type = "button";
+        close.textContent = "✖";
+        close.addEventListener("click", () => t.remove());
+
+        t.appendChild(icon);
+        t.appendChild(txt);
+        t.appendChild(close);
+
+        toastWrap.appendChild(t);
+        const kill = setTimeout(() => { if(t && t.parentNode) t.remove(); }, 4200);
+        t.addEventListener("mouseenter", () => clearTimeout(kill));
       };
-      img.src = data;
-    }
-  }
 
-  function setActiveTool(t){
-    tool = t;
-    toolBtns.forEach(b => b.classList.toggle("active", b.dataset.tool === t));
-  }
-  toolBtns.forEach(b => b.addEventListener("click", () => setActiveTool(b.dataset.tool)));
+      const defaultState = () => ({
+        idx: 0,
+        score: 0,
+        theme: "light",
+        presenting: false,
+        inputs: {},
+        mcq: {},
+        scored: {},
+        boardImages: {},
+        lastQuizAddedAt: null
+      });
 
-  function getPos(evt){
-    const rect = canvas.getBoundingClientRect();
-    const touch = evt.touches && evt.touches[0];
-    const clientX = touch ? touch.clientX : evt.clientX;
-    const clientY = touch ? touch.clientY : evt.clientY;
-    return { x: clientX - rect.left, y: clientY - rect.top, w: rect.width, h: rect.height };
-  }
+      let state = defaultState();
 
-  function stroke(from, to){
-    ctx.save();
-    const width = Number(sizeEl.value);
-    if (tool === "eraser"){
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.strokeStyle = "rgba(0,0,0,1)";
-      ctx.lineWidth = width * 2.2;
-    } else {
-      ctx.globalCompositeOperation = "source-over";
-      ctx.strokeStyle = colorEl.value;
-      ctx.lineWidth = width;
-    }
-    ctx.beginPath();
-    ctx.moveTo(from.x, from.y);
-    ctx.lineTo(to.x, to.y);
-    ctx.stroke();
-    ctx.restore();
-  }
+      const saveState = () => {
+        try{
+          localStorage.setItem(LS_KEY, JSON.stringify(state));
+        }catch(e){}
+      };
 
-  function startDraw(evt){
-    drawing = true;
-    const pos = getPos(evt);
-    last = { x: pos.x, y: pos.y };
-    evt.preventDefault();
-  }
-  function moveDraw(evt){
-    if (!drawing) return;
-    const pos = getPos(evt);
-    const now = { x: pos.x, y: pos.y };
-    stroke(last, now);
-    last = now;
-    evt.preventDefault();
-  }
-  function endDraw(){ drawing = false; last = null; }
+      const loadState = () => {
+        try{
+          const raw = localStorage.getItem(LS_KEY);
+          if(!raw) return;
+          const parsed = JSON.parse(raw);
+          if(!parsed || typeof parsed !== "object") return;
+          state = Object.assign(defaultState(), parsed);
+        }catch(e){}
+      };
 
-  canvas.addEventListener("mousedown", startDraw);
-  canvas.addEventListener("mousemove", moveDraw);
-  window.addEventListener("mouseup", endDraw);
+      const saveBoardImages = () => {
+        try{
+          localStorage.setItem(LS_BOARD, JSON.stringify(state.boardImages || {}));
+        }catch(e){}
+      };
 
-  canvas.addEventListener("touchstart", startDraw, {passive:false});
-  canvas.addEventListener("touchmove", moveDraw, {passive:false});
-  window.addEventListener("touchend", endDraw);
+      const loadBoardImages = () => {
+        try{
+          const raw = localStorage.getItem(LS_BOARD);
+          if(!raw) return;
+          const parsed = JSON.parse(raw);
+          if(parsed && typeof parsed === "object") state.boardImages = parsed;
+        }catch(e){}
+      };
 
-  clearBtn.addEventListener("click", () => {
-    const rect = canvas.getBoundingClientRect();
-    ctx.clearRect(0,0,rect.width,rect.height);
-  });
+      const updateUI = () => {
+        counter.textContent = `${state.idx + 1} / ${total}`;
+        const pct = ((state.idx + 1) / total) * 100;
+        bar.style.width = `${pct}%`;
+        scorePill.textContent = String(state.score || 0);
 
-  saveBtn.addEventListener("click", () => {
-    const a = document.createElement("a");
-    a.download = `whiteboard-slide-${idx+1}.png`;
-    a.href = canvas.toDataURL("image/png");
-    a.click();
-  });
+        prevBtn.disabled = state.idx <= 0;
+        nextBtn.disabled = state.idx >= total - 1;
 
-  function saveBoardForSlide(i){
-    if (!canvas) return;
-    boardStore.set(i, canvas.toDataURL("image/png"));
-  }
+        $$(".slide", deck).forEach((s, i) => s.classList.toggle("active", i === state.idx));
 
-  function restoreBoardForSlide(i){
-    const rect = canvas.getBoundingClientRect();
-    ctx.clearRect(0,0,rect.width,rect.height);
-    const data = boardStore.get(i);
-    if (!data) return;
-    const img = new Image();
-    img.onload = () => ctx.drawImage(img, 0, 0, rect.width, rect.height);
-    img.src = data;
-  }
+        $$(".slideItem", drawerBody).forEach((b) => {
+          const n = Number(b.dataset.go || -1);
+          b.classList.toggle("active", n === state.idx);
+        });
 
-  function show(i){
-    saveBoardForSlide(idx);
-    idx = Math.max(0, Math.min(slides.length - 1, i));
-    slides.forEach((s,n) => s.classList.toggle("active", n === idx));
-    collapseAnswers(slides[idx]);
-    restoreBoardForSlide(idx);
-    progress();
-    window.scrollTo({top:0, behavior:"smooth"});
-  }
+        hydrateSlide(slides[state.idx]);
+        wm2.textContent = `Slide ${state.idx + 1}: ${slides[state.idx].dataset.title || "—"}`;
+      };
 
-  prevBtn.addEventListener("click", () => show(idx - 1));
-  nextBtn.addEventListener("click", () => show(idx + 1));
+      const go = (i) => {
+        const next = Math.max(0, Math.min(total - 1, i));
+        if(next === state.idx) return;
+        state.idx = next;
+        saveState();
+        updateUI();
+      };
 
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft") show(idx - 1);
-    if (e.key === "ArrowRight") show(idx + 1);
-    if (e.key === "Home") show(0);
-    if (e.key === "End") show(slides.length - 1);
-  });
+      const openDrawerUI = () => {
+        drawer.classList.add("open");
+        drawerBackdrop.classList.add("open");
+        drawer.setAttribute("aria-hidden","false");
+        drawerSearch.focus();
+      };
 
-  // Q/A click handler
-  document.addEventListener("click", (e) => {
-    const ansBtn = e.target.closest(".btnAnswer");
-    if (ansBtn){
-      const id = ansBtn.getAttribute("data-answer");
-      const ans = document.getElementById(id);
-      if (!ans) return;
-      const open = ans.style.display === "block";
-      ans.style.display = open ? "none" : "block";
-      ansBtn.textContent = open ? "عرض الإجابة" : "إخفاء الإجابة";
-      return;
-    }
-    const showAllBtn = e.target.closest("[data-showall]");
-    if (showAllBtn){
-      const slide = e.target.closest(".slide");
-      const answers = Array.from(slide.querySelectorAll(".answer"));
-      const anyClosed = answers.some(a => a.style.display !== "block");
-      answers.forEach(a => a.style.display = anyClosed ? "block" : "none");
-      slide.querySelectorAll(".btnAnswer").forEach(b => b.textContent = anyClosed ? "إخفاء الإجابة" : "عرض الإجابة");
-      showAllBtn.textContent = anyClosed ? "إخفاء كل الإجابات" : "عرض كل الإجابات";
-      return;
-    }
-  });
+      const closeDrawerUI = () => {
+        drawer.classList.remove("open");
+        drawerBackdrop.classList.remove("open");
+        drawer.setAttribute("aria-hidden","true");
+      };
 
-  // Init
-  resizeCanvas();
-  setActiveTool("pen");
-  progress();
+      const setTheme = (mode) => {
+        const html = document.documentElement;
+        if(mode === "dark"){
+          html.setAttribute("data-theme","dark");
+          state.theme = "dark";
+        }else{
+          html.removeAttribute("data-theme");
+          state.theme = "light";
+        }
+        saveState();
+      };
 
-  window.addEventListener("resize", () => {
-    saveBoardForSlide(idx);
-    resizeCanvas();
-    restoreBoardForSlide(idx);
-  });
+      const togglePresent = () => {
+        document.body.classList.toggle("presenting");
+        state.presenting = document.body.classList.contains("presenting");
+        saveState();
+      };
 
-  // Ensure board restores for first slide
-  restoreBoardForSlide(0);
-</script>
+      const toggleFull = async () => {
+        try{
+          if(!document.fullscreenElement){
+            await document.documentElement.requestFullscreen();
+          }else{
+            await document.exitFullscreen();
+          }
+        }catch(e){}
+      };
 
+      const buildDrawer = () => {
+        drawerBody.innerHTML = "";
+        slides.forEach((s, i) => {
+          const title = s.dataset.title || `شريحة ${i+1}`;
+          const btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "slideItem";
+          btn.dataset.go = String(i);
+          const t = document.createElement("div");
+          t.textContent = title;
+          const n = document.createElement("div");
+          n.className = "n";
+          n.textContent = String(i+1);
+          btn.appendChild(t);
+          btn.appendChild(n);
+          btn.addEventListener("click", () => {
+            go(i);
+            closeDrawerUI();
+          });
+          drawerBody.appendChild(btn);
+        });
+      };
+
+      const filterDrawer = (q) => {
+        const qq = norm(q).toLowerCase();
+        $$(".slideItem", drawerBody).forEach((b) => {
+          const title = norm(b.textContent).toLowerCase();
+          b.style.display = title.includes(qq) ? "" : "none";
+        });
+      };
+
+      const hydrateSlide = (slideEl) => {
+        if(!slideEl) return;
+
+        const inputs = $$("input[data-ans]", slideEl);
+        inputs.forEach((inp, idx) => {
+          const pr = inp.closest("[data-practice]");
+          const pid = pr ? pr.getAttribute("data-practice") : "x";
+          const key = `${pid}:${idx}`;
+          if(state.inputs && Object.prototype.hasOwnProperty.call(state.inputs, key)){
+            inp.value = state.inputs[key];
+          }
+        });
+
+        const mcqs = $$("[data-mcq]", slideEl);
+        mcqs.forEach((mcq, idx) => {
+          const pr = mcq.closest("[data-practice]");
+          const pid = pr ? pr.getAttribute("data-practice") : "x";
+          const key = `${pid}:mcq:${idx}`;
+          const saved = state.mcq ? state.mcq[key] : null;
+          $$(".choice", mcq).forEach((ch) => {
+            ch.classList.toggle("active", saved && saved === ch.dataset.choice);
+          });
+        });
+      };
+
+      const wireInputsPersistence = () => {
+        slides.forEach((slideEl) => {
+          const inputs = $$("input[data-ans]", slideEl);
+          inputs.forEach((inp, idx) => {
+            inp.addEventListener("input", () => {
+              const pr = inp.closest("[data-practice]");
+              const pid = pr ? pr.getAttribute("data-practice") : "x";
+              const key = `${pid}:${idx}`;
+              state.inputs[key] = inp.value;
+              saveState();
+            });
+          });
+
+          const mcqs = $$("[data-mcq]", slideEl);
+          mcqs.forEach((mcq, idx) => {
+            const pr = mcq.closest("[data-practice]");
+            const pid = pr ? pr.getAttribute("data-practice") : "x";
+            const key = `${pid}:mcq:${idx}`;
+
+            $$(".choice", mcq).forEach((ch) => {
+              ch.addEventListener("click", () => {
+                $$(".choice", mcq).forEach((c) => c.classList.remove("active","good","bad"));
+                ch.classList.add("active");
+                state.mcq[key] = ch.dataset.choice;
+                saveState();
+              });
+            });
+          });
+        });
+      };
+
+      const checkPractice = (pid) => {
+        const practice = document.querySelector(`[data-practice="${pid}"]`);
+        if(!practice) return;
+
+        const items = $$(".item", practice);
+        let gained = 0;
+
+        items.forEach((item) => {
+          const fb = $(".feedback", item);
+          if(!fb) return;
+
+          const inp = $("input[data-ans]", item);
+          const mcq = $("[data-mcq]", item);
+
+          let ok = false;
+          let user = "";
+          let expected = "";
+
+          if(inp){
+            expected = (inp.dataset.ans || "").toString();
+            user = inp.value || "";
+            ok = normTight(user) === normTight(expected) || norm(user) === norm(expected);
+          }else if(mcq){
+            expected = (mcq.dataset.ans || "").toString();
+            const pr = mcq.closest("[data-practice]");
+            const pid2 = pr ? pr.getAttribute("data-practice") : "x";
+            const idx2 = $$(".mcq[data-mcq]", practice).indexOf(mcq);
+            const key2 = `${pid2}:mcq:${idx2}`;
+            const saved = state.mcq ? state.mcq[key2] : null;
+            user = saved || "";
+            ok = normTight(user) === normTight(expected);
+          }
+
+          const pr = item.closest("[data-practice]");
+          const p = pr ? pr.getAttribute("data-practice") : pid;
+          const itemIndex = items.indexOf(item);
+          const scoreKey = `${p}:item:${itemIndex}`;
+
+          fb.style.display = "block";
+          fb.classList.remove("ok","bad");
+
+          if(ok){
+            fb.classList.add("ok");
+            const firstTime = !state.scored[scoreKey];
+            if(firstTime){
+              state.scored[scoreKey] = true;
+              state.score += 1;
+              gained += 1;
+              fb.textContent = "✅ صحيح! +1";
+            }else{
+              fb.textContent = "✅ صحيح!";
+            }
+
+            if(mcq){
+              const choices = $$(".choice", mcq);
+              choices.forEach((c) => {
+                c.classList.remove("good","bad");
+                if(c.dataset.choice === expected) c.classList.add("good");
+                if(c.classList.contains("active") && c.dataset.choice !== expected) c.classList.add("bad");
+              });
+            }
+          }else{
+            fb.classList.add("bad");
+            if(expected){
+              fb.textContent = "❌ غير صحيح. جرّب مرة أخرى.";
+            }else{
+              fb.textContent = "❌ غير صحيح.";
+            }
+
+            if(mcq){
+              const choices = $$(".choice", mcq);
+              choices.forEach((c) => {
+                c.classList.remove("good","bad");
+                if(c.dataset.choice === expected) c.classList.add("good");
+                if(c.classList.contains("active") && c.dataset.choice !== expected) c.classList.add("bad");
+              });
+            }
+          }
+        });
+
+        saveState();
+        updateUI();
+
+        if(gained > 0){
+          toast("نقاط جديدة", `أضفت ${gained} نقطة`, "good");
+          if(state.score === 5) toast("🔥 ممتاز", "وصلت 5 نقاط", "good");
+          if(state.score === 10) toast("🚀 بطل", "وصلت 10 نقاط", "good");
+          if(state.score === 20) toast("🏆 رهيب", "وصلت 20 نقطة", "good");
+        }else{
+          toast("جرّب مرة أخرى", "لا توجد نقاط جديدة الآن", "bad");
+        }
+      };
+
+      const wireChecks = () => {
+        $$("[data-check]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const pid = btn.getAttribute("data-check");
+            checkPractice(pid);
+          });
+        });
+      };
+
+      const wireQA = () => {
+        $$("[data-answer]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const id = btn.getAttribute("data-answer");
+            const ans = document.getElementById(id);
+            if(!ans) return;
+            const open = ans.style.display === "block";
+            ans.style.display = open ? "none" : "block";
+          });
+        });
+
+        $$("[data-showall]").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            const slide = btn.closest(".slide");
+            if(!slide) return;
+            const answers = $$(".answer", slide);
+            const anyHidden = answers.some(a => a.style.display !== "block");
+            answers.forEach((a) => a.style.display = anyHidden ? "block" : "none");
+          });
+        });
+      };
+
+      const exportJSON = () => {
+        const payload = {
+          version: 1,
+          exportedAt: new Date().toISOString(),
+          state: state
+        };
+        const blob = new Blob([JSON.stringify(payload, null, 2)], {type: "application/json"});
+        const a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "nahik_progress.json";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(() => URL.revokeObjectURL(a.href), 500);
+        toast("تم التصدير", "تم حفظ ملف التقدّم", "good");
+      };
+
+      const importJSON = (file) => {
+        if(!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          try{
+            const parsed = JSON.parse(reader.result);
+            const incoming = parsed && parsed.state ? parsed.state : parsed;
+            if(!incoming || typeof incoming !== "object") throw new Error("bad");
+            state = Object.assign(defaultState(), incoming);
+            if(state.idx >= total) state.idx = 0;
+            saveState();
+            if(state.boardImages) saveBoardImages();
+            setTheme(state.theme === "dark" ? "dark" : "light");
+            document.body.classList.toggle("presenting", !!state.presenting);
+            updateUI();
+            toast("تم الاستيراد", "تم تحميل التقدّم بنجاح", "good");
+          }catch(e){
+            toast("فشل الاستيراد", "الملف غير صالح", "bad");
+          }
+        };
+        reader.readAsText(file);
+      };
+
+      const hardReset = () => {
+        const ok = confirm("هل تريد تصفير كل شيء؟ سيتم حذف النقاط والإجابات ورسومات السبورة.");
+        if(!ok) return;
+        try{
+          localStorage.removeItem(LS_KEY);
+          localStorage.removeItem(LS_BOARD);
+        }catch(e){}
+        state = defaultState();
+        setTheme("light");
+        document.body.classList.remove("presenting");
+        updateUI();
+        toast("تم التصفير", "رجعنا من البداية", "good");
+      };
+
+      const shuffle = (arr) => {
+        const a = arr.slice();
+        for(let i=a.length-1;i>0;i--){
+          const j = Math.floor(Math.random()*(i+1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      };
+
+      const quizBank = [
+        {type:"fill", q:'استخرج الضمير من "أكرمته"', sub:"اكتب الضمير فقط", a:"ه"},
+        {type:"fill", q:'استخرج الضمير من "شكرني"', sub:"اكتب الضمير فقط", a:"ني"},
+        {type:"fill", q:'استخرج الضمير من "ساعدنا"', sub:"اكتب الضمير فقط", a:"نا"},
+        {type:"fill", q:'استخرج الضمير من "رأيتك"', sub:"اكتب الضمير فقط", a:"ك"},
+        {type:"fill", q:'استخرج الضمير من "قابلهم"', sub:"اكتب الضمير فقط", a:"هم"},
+        {type:"fill", q:'استخرج الضمير من "ساعدها"', sub:"اكتب الضمير فقط", a:"ها"},
+        {type:"fill", q:'صحّح: "رأيت ك"', sub:"اكتب الصحيح", a:"رأيتك"},
+        {type:"fill", q:'صحّح: "شكر ني"', sub:"اكتب الصحيح", a:"شكرني"},
+        {type:"fill", q:'صحّح: "ساعد نا"', sub:"اكتب الصحيح", a:"ساعدنا"},
+        {type:"fill", q:'حوّل: "أشكره" إلى مخاطب', sub:"اكتب الجملة", a:"أشكرك"},
+        {type:"fill", q:'حوّل: "سألك" إلى متكلم', sub:"اكتب الجملة", a:"سألني"},
+        {type:"fill", q:'حوّل: "سألني" إلى غائب', sub:"اكتب الجملة", a:"سأله"},
+        {type:"fill", q:'حوّل: "سألني" إلى نحن', sub:"اكتب الجملة", a:"سألنا"},
+        {type:"mcq", q:'في كلمة "رأيتك" الضمير هو:', sub:"اختر الإجابة", a:"ك", choices:["ه","ك","ني","نا"]},
+        {type:"mcq", q:'في كلمة "أكرمه" الضمير هو:', sub:"اختر الإجابة", a:"ه", choices:["ه","ك","ني","نا"]},
+        {type:"mcq", q:'في كلمة "ساعدها" الضمير هو:', sub:"اختر الإجابة", a:"ها", choices:["ها","ه","هم","ك"]},
+        {type:"mcq", q:'في كلمة "قابلهم" الضمير هو:', sub:"اختر الإجابة", a:"هم", choices:["هم","ها","ني","نا"]},
+        {type:"mcq", q:'في كلمة "علّمني" الضمير هو:', sub:"اختر الإجابة", a:"ني", choices:["ك","ني","نا","ه"]},
+        {type:"mcq", q:'في كلمة "كرّمنا" الضمير هو:', sub:"اختر الإجابة", a:"نا", choices:["ك","ني","نا","ه"]},
+        {type:"mcq", q:'أهم خطأ شائع هو:', sub:"اختر الإجابة", a:"فصل الضمير", choices:["فصل الضمير","زيادة التنوين","حذف الفعل","تقديم المفعول"]},
+        {type:"mcq", q:'الضمير المتصل هنا يكون في محل:', sub:"اختر الإجابة", a:"مفعول به", choices:["فاعل","مفعول به","مضاف إليه","حال"]}
+      ];
+
+      let quizRun = null;
+
+      const openQuiz = () => {
+        modalBack.classList.add("open");
+        quizModal.classList.add("open");
+        quizModal.setAttribute("aria-hidden","false");
+      };
+
+      const closeQuiz = () => {
+        modalBack.classList.remove("open");
+        quizModal.classList.remove("open");
+        quizModal.setAttribute("aria-hidden","true");
+        stopQuizTimer();
+      };
+
+      let quizTimerId = null;
+
+      const stopQuizTimer = () => {
+        if(quizTimerId){
+          clearInterval(quizTimerId);
+          quizTimerId = null;
+        }
+      };
+
+      const fmtTime = (s) => {
+        const m = Math.floor(s/60);
+        const r = s%60;
+        return `${String(m).padStart(2,"0")}:${String(r).padStart(2,"0")}`;
+      };
+
+      const startQuiz = () => {
+        const want = Math.max(3, Math.min(40, Number(quizCount.value || 10)));
+        const mins = Math.max(1, Math.min(60, Number(quizMinutes.value || 7)));
+        const mode = quizType.value || "mix";
+
+        let pool = quizBank.slice();
+        if(mode === "fill") pool = pool.filter(x => x.type === "fill");
+        if(mode === "mcq") pool = pool.filter(x => x.type === "mcq");
+        pool = shuffle(pool).slice(0, want);
+
+        quizRun = {
+          list: pool,
+          i: 0,
+          right: 0,
+          wrong: 0,
+          score: 0,
+          done: 0,
+          secondsLeft: mins * 60,
+          addedToMain: false
+        };
+
+        quizSummary.style.display = "none";
+        quizStage.style.display = "block";
+        quizResult.style.display = "none";
+        quizInput.value = "";
+        quizChoices.style.display = "none";
+        quizChoices.innerHTML = "";
+
+        quizProg.textContent = `1/${quizRun.list.length}`;
+        quizScore.textContent = "0";
+        quizTimer.textContent = fmtTime(quizRun.secondsLeft);
+
+        renderQuizQ();
+        stopQuizTimer();
+        quizTimerId = setInterval(() => {
+          if(!quizRun) return;
+          quizRun.secondsLeft -= 1;
+          if(quizRun.secondsLeft < 0) quizRun.secondsLeft = 0;
+          quizTimer.textContent = fmtTime(quizRun.secondsLeft);
+          if(quizRun.secondsLeft === 0){
+            finishQuiz();
+          }
+        }, 1000);
+
+        toast("بدأ الاختبار", "شدّ حيلك 😄", "good");
+      };
+
+      const renderQuizQ = () => {
+        if(!quizRun) return;
+        const item = quizRun.list[quizRun.i];
+        if(!item){
+          finishQuiz();
+          return;
+        }
+
+        quizProg.textContent = `${quizRun.i + 1}/${quizRun.list.length}`;
+        quizQ.textContent = item.q;
+        quizSub.textContent = item.sub || "—";
+        quizResult.style.display = "none";
+        quizResult.textContent = "";
+
+        quizInput.value = "";
+        quizChoices.innerHTML = "";
+
+        if(item.type === "mcq"){
+          quizChoices.style.display = "flex";
+          quizAnsRow.style.display = "none";
+          const choices = shuffle(item.choices || []);
+          choices.forEach((c) => {
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "choice";
+            btn.textContent = c;
+            btn.addEventListener("click", () => submitQuizAnswer(c, true));
+            quizChoices.appendChild(btn);
+          });
+        }else{
+          quizChoices.style.display = "none";
+          quizAnsRow.style.display = "flex";
+          setTimeout(() => quizInput.focus(), 50);
+        }
+      };
+
+      const submitQuizAnswer = (val, autoAdvance) => {
+        if(!quizRun) return;
+        const item = quizRun.list[quizRun.i];
+        if(!item) return;
+
+        const user = normTight(val || "");
+        const expected = normTight(item.a || "");
+        const correct = user === expected;
+
+        quizRun.done += 1;
+
+        if(correct){
+          quizRun.right += 1;
+          quizRun.score += 1;
+          quizScore.textContent = String(quizRun.score);
+          quizResult.style.display = "block";
+          quizResult.className = "result ok";
+          quizResult.textContent = "✅ صحيح!";
+        }else{
+          quizRun.wrong += 1;
+          quizResult.style.display = "block";
+          quizResult.className = "result bad";
+          quizResult.textContent = `❌ خطأ. الإجابة: ${item.a}`;
+        }
+
+        const goNext = () => {
+          quizRun.i += 1;
+          if(quizRun.i >= quizRun.list.length){
+            finishQuiz();
+          }else{
+            renderQuizQ();
+          }
+        };
+
+        if(autoAdvance){
+          setTimeout(goNext, 450);
+        }
+      };
+
+      const skipQuiz = () => {
+        if(!quizRun) return;
+        quizRun.done += 1;
+        quizRun.i += 1;
+        if(quizRun.i >= quizRun.list.length){
+          finishQuiz();
+        }else{
+          renderQuizQ();
+        }
+      };
+
+      const finishQuiz = () => {
+        if(!quizRun) return;
+        stopQuizTimer();
+
+        quizStage.style.display = "none";
+        quizSummary.style.display = "flex";
+
+        quizFinalScore.textContent = String(quizRun.score);
+        quizRight.textContent = String(quizRun.right);
+        quizWrong.textContent = String(quizRun.wrong);
+        quizDone.textContent = String(quizRun.done);
+
+        toast("انتهى الاختبار", `نتيجتك: ${quizRun.score}`, "good");
+      };
+
+      const addQuizScoreToMain = () => {
+        if(!quizRun) return;
+        if(quizRun.addedToMain){
+          toast("ملاحظة", "تم إضافة نقاط هذا الاختبار مسبقًا", "bad");
+          return;
+        }
+        const now = new Date().toISOString();
+        state.score += (quizRun.score || 0);
+        state.lastQuizAddedAt = now;
+        quizRun.addedToMain = true;
+        saveState();
+        updateUI();
+        toast("تمت الإضافة", `أضفت ${quizRun.score} نقطة إلى مجموعك`, "good");
+      };
+
+      const resetQuizUI = () => {
+        stopQuizTimer();
+        quizRun = null;
+        quizStage.style.display = "none";
+        quizSummary.style.display = "none";
+        quizResult.style.display = "none";
+        quizChoices.style.display = "none";
+        quizChoices.innerHTML = "";
+        quizInput.value = "";
+        toast("تم التصفير", "جاهز لاختبار جديد", "good");
+      };
+
+      let bCtx = null;
+      let bTool = "pen";
+      let bDrawing = false;
+      let bStart = null;
+      let bLast = null;
+      let bUndo = [];
+      let bRedo = [];
+      let bBaseUrl = null;
+
+      const resizeCanvas = (cv) => {
+        const rect = cv.getBoundingClientRect();
+        const dpr = Math.max(1, window.devicePixelRatio || 1);
+        cv.width = Math.floor(rect.width * dpr);
+        cv.height = Math.floor(rect.height * dpr);
+        const ctx = cv.getContext("2d");
+        ctx.setTransform(dpr,0,0,dpr,0,0);
+        return ctx;
+      };
+
+      const canvasRectPos = (cv, ev) => {
+        const r = cv.getBoundingClientRect();
+        const x = ev.clientX - r.left;
+        const y = ev.clientY - r.top;
+        return {x, y};
+      };
+
+      const drawFromUrl = (url) => new Promise((resolve) => {
+        if(!url){
+          resolve();
+          return;
+        }
+        const img = new Image();
+        img.onload = () => {
+          const r = boardCanvas.getBoundingClientRect();
+          bCtx.save();
+          bCtx.globalCompositeOperation = "source-over";
+          bCtx.globalAlpha = 1;
+          bCtx.clearRect(0,0,r.width,r.height);
+          bCtx.drawImage(img, 0, 0, r.width, r.height);
+          bCtx.restore();
+          resolve();
+        };
+        img.onerror = () => resolve();
+        img.src = url;
+      });
+
+      const snapshot = () => {
+        try{
+          const url = boardCanvas.toDataURL("image/jpeg", 0.88);
+          bUndo.push(url);
+          if(bUndo.length > 28) bUndo.shift();
+          bRedo = [];
+          state.boardImages[String(state.idx)] = url;
+          saveState();
+          saveBoardImages();
+        }catch(e){}
+      };
+
+      const restore = (url) => {
+        if(!url) return;
+        drawFromUrl(url);
+      };
+
+      const setComposite = () => {
+        bCtx.globalCompositeOperation = "source-over";
+        bCtx.globalAlpha = 1;
+      };
+
+      const toolStrokeSetup = () => {
+        const sz = Number(size2.value || 6);
+        const a = Number(alpha2.value || 100) / 100;
+
+        bCtx.lineCap = "round";
+        bCtx.lineJoin = "round";
+        bCtx.lineWidth = sz;
+        bCtx.strokeStyle = color2.value || "#2563eb";
+
+        if(bTool === "highlighter"){
+          bCtx.globalAlpha = Math.min(1, a * 0.35);
+        }else{
+          bCtx.globalAlpha = a;
+        }
+
+        if(bTool === "eraser"){
+          bCtx.globalCompositeOperation = "destination-out";
+          bCtx.globalAlpha = 1;
+        }else{
+          bCtx.globalCompositeOperation = "source-over";
+        }
+      };
+
+      const drawLine = (a, b) => {
+        bCtx.beginPath();
+        bCtx.moveTo(a.x, a.y);
+        bCtx.lineTo(b.x, b.y);
+        bCtx.stroke();
+      };
+
+      const drawRect = (a, b) => {
+        const x = Math.min(a.x, b.x);
+        const y = Math.min(a.y, b.y);
+        const w = Math.abs(a.x - b.x);
+        const h = Math.abs(a.y - b.y);
+        bCtx.strokeRect(x, y, w, h);
+      };
+
+      const drawCircle = (a, b) => {
+        const cx = (a.x + b.x) / 2;
+        const cy = (a.y + b.y) / 2;
+        const rx = Math.abs(a.x - b.x) / 2;
+        const ry = Math.abs(a.y - b.y) / 2;
+        const r = Math.max(rx, ry);
+        bCtx.beginPath();
+        bCtx.arc(cx, cy, r, 0, Math.PI * 2);
+        bCtx.stroke();
+      };
+
+      const drawArrow = (a, b) => {
+        const head = 12;
+        const dx = b.x - a.x;
+        const dy = b.y - a.y;
+        const ang = Math.atan2(dy, dx);
+        drawLine(a, b);
+
+        const p1 = {x: b.x - head * Math.cos(ang - Math.PI/7), y: b.y - head * Math.sin(ang - Math.PI/7)};
+        const p2 = {x: b.x - head * Math.cos(ang + Math.PI/7), y: b.y - head * Math.sin(ang + Math.PI/7)};
+        bCtx.beginPath();
+        bCtx.moveTo(b.x, b.y);
+        bCtx.lineTo(p1.x, p1.y);
+        bCtx.lineTo(p2.x, p2.y);
+        bCtx.closePath();
+        bCtx.fillStyle = color2.value || "#2563eb";
+        bCtx.globalAlpha = Math.min(1, Number(alpha2.value || 100)/100);
+        bCtx.fill();
+      };
+
+      const previewShape = async (from, to) => {
+        if(!bBaseUrl) return;
+        await drawFromUrl(bBaseUrl);
+        toolStrokeSetup();
+        if(bTool === "line") drawLine(from, to);
+        if(bTool === "rect") drawRect(from, to);
+        if(bTool === "circle") drawCircle(from, to);
+        if(bTool === "arrow") drawArrow(from, to);
+        setComposite();
+      };
+
+      const openBoard = async () => {
+        boardOverlayBack.classList.add("open");
+        boardOverlay.classList.add("open");
+        boardOverlay.setAttribute("aria-hidden","false");
+
+        bCtx = resizeCanvas(boardCanvas);
+
+        const url = state.boardImages[String(state.idx)] || null;
+        await drawFromUrl(url);
+
+        snapshot();
+        bUndo.pop();
+
+        toast("السبورة", "تم فتح السبورة لهذه الشريحة", "good");
+      };
+
+      const closeBoard = () => {
+        boardOverlayBack.classList.remove("open");
+        boardOverlay.classList.remove("open");
+        boardOverlay.setAttribute("aria-hidden","true");
+        bDrawing = false;
+        bStart = null;
+        bLast = null;
+        bBaseUrl = null;
+      };
+
+      const setTool = (t) => {
+        bTool = t;
+        $$(".toolBtn[data-tool]").forEach((b) => b.classList.toggle("active", b.dataset.tool === t));
+      };
+
+      const wireBoardTools = () => {
+        $$(".toolBtn[data-tool]").forEach((b) => {
+          b.addEventListener("click", () => setTool(b.dataset.tool));
+        });
+
+        undo2.addEventListener("click", () => {
+          if(bUndo.length < 2) return;
+          const cur = bUndo.pop();
+          bRedo.push(cur);
+          const prev = bUndo[bUndo.length - 1];
+          restore(prev);
+          state.boardImages[String(state.idx)] = prev;
+          saveState();
+          saveBoardImages();
+        });
+
+        redo2.addEventListener("click", () => {
+          if(bRedo.length === 0) return;
+          const url = bRedo.pop();
+          bUndo.push(url);
+          restore(url);
+          state.boardImages[String(state.idx)] = url;
+          saveState();
+          saveBoardImages();
+        });
+
+        clear2.addEventListener("click", async () => {
+          const ok = confirm("مسح السبورة لهذه الشريحة؟");
+          if(!ok) return;
+          const r = boardCanvas.getBoundingClientRect();
+          bCtx.clearRect(0,0,r.width,r.height);
+          snapshot();
+          toast("تم المسح", "تم مسح السبورة", "good");
+        });
+
+        save2.addEventListener("click", () => {
+          try{
+            const url = boardCanvas.toDataURL("image/png");
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `board_slide_${state.idx + 1}.png`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            toast("تم الحفظ", "تم تنزيل صورة السبورة", "good");
+          }catch(e){
+            toast("فشل الحفظ", "تعذر تنزيل الصورة", "bad");
+          }
+        });
+
+        boardCanvas.addEventListener("pointerdown", async (ev) => {
+          if(!bCtx) return;
+          boardCanvas.setPointerCapture(ev.pointerId);
+
+          bDrawing = true;
+          bStart = canvasRectPos(boardCanvas, ev);
+          bLast = bStart;
+
+          bBaseUrl = null;
+
+          if(["line","rect","circle","arrow"].includes(bTool)){
+            try{
+              bBaseUrl = boardCanvas.toDataURL("image/jpeg", 0.88);
+            }catch(e){
+              bBaseUrl = null;
+            }
+          }
+
+          if(bTool === "text"){
+            const txt = prompt("اكتب النص");
+            if(txt && txt.trim()){
+              const a = Number(alpha2.value || 100) / 100;
+              bCtx.save();
+              bCtx.globalAlpha = a;
+              bCtx.fillStyle = color2.value || "#2563eb";
+              bCtx.font = `900 ${Math.max(16, Number(size2.value || 18) * 3)}px system-ui, -apple-system, "Segoe UI", Tahoma, Arial, sans-serif`;
+              bCtx.textBaseline = "top";
+              bCtx.fillText(txt.trim(), bStart.x, bStart.y);
+              bCtx.restore();
+              snapshot();
+              toast("تمت الإضافة", "تمت إضافة النص", "good");
+            }
+            bDrawing = false;
+            bStart = null;
+            bLast = null;
+            bBaseUrl = null;
+          }else if(["pen","highlighter","eraser"].includes(bTool)){
+            toolStrokeSetup();
+            bCtx.beginPath();
+            bCtx.moveTo(bStart.x, bStart.y);
+          }
+        });
+
+        boardCanvas.addEventListener("pointermove", async (ev) => {
+          if(!bDrawing || !bCtx) return;
+          const p = canvasRectPos(boardCanvas, ev);
+
+          if(["pen","highlighter","eraser"].includes(bTool)){
+            toolStrokeSetup();
+            bCtx.lineTo(p.x, p.y);
+            bCtx.stroke();
+            bLast = p;
+            setComposite();
+          }else if(["line","rect","circle","arrow"].includes(bTool)){
+            await previewShape(bStart, p);
+            bLast = p;
+          }
+        });
+
+        boardCanvas.addEventListener("pointerup", async (ev) => {
+          if(!bDrawing || !bCtx) return;
+          bDrawing = false;
+          const p = canvasRectPos(boardCanvas, ev);
+
+          if(["line","rect","circle","arrow"].includes(bTool)){
+            await previewShape(bStart, p);
+            snapshot();
+          }else if(["pen","highlighter","eraser"].includes(bTool)){
+            setComposite();
+            snapshot();
+          }
+
+          bStart = null;
+          bLast = null;
+          bBaseUrl = null;
+        });
+      };
+
+      const wireNav = () => {
+        prevBtn.addEventListener("click", () => go(state.idx - 1));
+        nextBtn.addEventListener("click", () => go(state.idx + 1));
+
+        jumpInput.addEventListener("keydown", (e) => {
+          if(e.key !== "Enter") return;
+          const raw = jumpInput.value || "";
+          const n = Number(raw);
+          if(Number.isFinite(n) && n >= 1 && n <= total){
+            go(n - 1);
+            jumpInput.value = "";
+            return;
+          }
+          const q = norm(raw).toLowerCase();
+          if(!q) return;
+          const idxFound = slides.findIndex(s => norm(s.dataset.title||"").toLowerCase().includes(q));
+          if(idxFound >= 0){
+            go(idxFound);
+            jumpInput.value = "";
+            return;
+          }
+          toast("لم أجد", "اكتب رقم شريحة أو جزء من العنوان", "bad");
+        });
+
+        openDrawer.addEventListener("click", openDrawerUI);
+        closeDrawer.addEventListener("click", closeDrawerUI);
+        drawerBackdrop.addEventListener("click", closeDrawerUI);
+
+        drawerSearch.addEventListener("input", () => filterDrawer(drawerSearch.value));
+
+        themeBtn.addEventListener("click", () => {
+          const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+          setTheme(isDark ? "light" : "dark");
+          toast("Theme", isDark ? "Light mode" : "Dark mode", "good");
+        });
+
+        presentBtn.addEventListener("click", () => {
+          togglePresent();
+          toast("Present", state.presenting ? "ON" : "OFF", "good");
+        });
+
+        fullBtn.addEventListener("click", () => toggleFull());
+
+        boardBtn.addEventListener("click", () => openBoard());
+        boardOverlayClose.addEventListener("click", () => closeBoard());
+        boardOverlayBack.addEventListener("click", () => closeBoard());
+
+        quizBtn.addEventListener("click", openQuiz);
+        quizClose.addEventListener("click", closeQuiz);
+        modalBack.addEventListener("click", closeQuiz);
+
+        quizStart.addEventListener("click", startQuiz);
+        quizReset.addEventListener("click", resetQuizUI);
+
+        quizSubmit.addEventListener("click", () => submitQuizAnswer(quizInput.value, true));
+        quizInput.addEventListener("keydown", (e) => {
+          if(e.key === "Enter") submitQuizAnswer(quizInput.value, true);
+        });
+        quizSkip.addEventListener("click", skipQuiz);
+
+        quizSaveToScore.addEventListener("click", addQuizScoreToMain);
+        quizBack.addEventListener("click", () => {
+          quizSummary.style.display = "none";
+          quizStage.style.display = "block";
+          if(quizRun){
+            quizRun.i = 0;
+            quizRun.right = 0;
+            quizRun.wrong = 0;
+            quizRun.score = 0;
+            quizRun.done = 0;
+            quizScore.textContent = "0";
+            renderQuizQ();
+            stopQuizTimer();
+            quizTimerId = setInterval(() => {
+              if(!quizRun) return;
+              quizRun.secondsLeft -= 1;
+              if(quizRun.secondsLeft < 0) quizRun.secondsLeft = 0;
+              quizTimer.textContent = fmtTime(quizRun.secondsLeft);
+              if(quizRun.secondsLeft === 0) finishQuiz();
+            }, 1000);
+          }
+        });
+
+        exportBtn.addEventListener("click", exportJSON);
+        importBtn.addEventListener("click", () => importFile.click());
+        importFile.addEventListener("change", (e) => {
+          const file = e.target.files && e.target.files[0];
+          importJSON(file);
+          importFile.value = "";
+        });
+
+        resetBtn.addEventListener("click", hardReset);
+
+        if(openQuizFromLast){
+          openQuizFromLast.addEventListener("click", () => {
+            openQuiz();
+            resetQuizUI();
+          });
+        }
+
+        if(openBoardFromLast){
+          openBoardFromLast.addEventListener("click", () => openBoard());
+        }
+
+        document.addEventListener("keydown", (e) => {
+          const tag = (document.activeElement && document.activeElement.tagName) ? document.activeElement.tagName.toLowerCase() : "";
+          const typing = ["input","textarea","select"].includes(tag);
+
+          if(e.key === "Escape"){
+            if(boardOverlay.classList.contains("open")) closeBoard();
+            if(quizModal.classList.contains("open")) closeQuiz();
+            if(drawer.classList.contains("open")) closeDrawerUI();
+            return;
+          }
+
+          if(typing) return;
+
+          if(e.key === "ArrowRight") go(state.idx + 1);
+          if(e.key === "ArrowLeft") go(state.idx - 1);
+          if(e.key === "Home") go(0);
+          if(e.key === "End") go(total - 1);
+          if(e.key === "d" || e.key === "D") openDrawerUI();
+          if(e.key === "q" || e.key === "Q") openQuiz();
+          if(e.key === "b" || e.key === "B") openBoard();
+        });
+      };
+
+      loadState();
+      loadBoardImages();
+
+      buildDrawer();
+      wireInputsPersistence();
+      wireChecks();
+      wireQA();
+      wireBoardTools();
+      wireNav();
+
+      setTheme(state.theme === "dark" ? "dark" : "light");
+      document.body.classList.toggle("presenting", !!state.presenting);
+
+      if(typeof state.idx !== "number" || state.idx < 0 || state.idx >= total) state.idx = 0;
+
+      updateUI();
+
+      setTimeout(() => {
+        toast("جاهز", "تنقّل بالسهمين أو الأزرار. افتح القائمة (D) أو الاختبار (Q) أو السبورة (B).", "good");
+      }, 250);
+
+    })();
+  </script>
 </body>
 </html>
